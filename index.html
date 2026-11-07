@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Enuda Client — обходы античитов и максимум FPS для Minecraft 1.21.11 (Fabric)</title>
 <meta name="description" content="Enuda — клиент для Minecraft Fabric 1.21.11: обходы GrimAC, Matrix, Vulcan и NCP, оптимизация рендера до +214% FPS, ClickGUI в стиле Material 3, облачные конфиги и 180+ модулей.">
-<meta name="theme-color" content="#0b0f0d">
+<meta name="theme-color" content="#0d0914">
 <meta property="og:title" content="Enuda Client — обходы, которые работают. FPS, который решает.">
 <meta property="og:description" content="Модификация для Minecraft Fabric 1.21.11: обходы античитов, оптимизация FPS, 180+ модулей и ClickGUI на Material 3.">
 <meta property="og:type" content="website">
@@ -37,6 +37,16 @@
 </script>
 </head>
 <body>
+
+<div class="bg-decor" aria-hidden="true">
+  <span class="bg-decor__globe"></span>
+  <span class="bg-decor__grid"></span>
+  <span class="bg-decor__orb bg-decor__orb--a"></span>
+  <span class="bg-decor__orb bg-decor__orb--b"></span>
+  <span class="bg-decor__orb bg-decor__orb--c"></span>
+  <span class="bg-decor__rings"></span>
+  <span class="bg-decor__noise"></span>
+</div>
 
 <a class="skip-link" href="#home">Перейти к содержимому</a>
 <noscript>
@@ -83,6 +93,49 @@
     <symbol id="i-cursor" viewBox="0 0 24 24"><path d="M5.5 3.8 19 11.2l-5.8 1.4-2.4 5.6L5.5 3.8Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></symbol>
     <symbol id="i-cart" viewBox="0 0 24 24"><path d="M3 4h2.2l2.3 10.4h9.9L19.5 7H6.2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9" cy="19" r="1.6" fill="currentColor"/><circle cx="17" cy="19" r="1.6" fill="currentColor"/></symbol>
     <symbol id="i-arrow-up" viewBox="0 0 24 24"><path d="M12 19V5m0 0-6 6m6-6 6 6" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+
+    <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="7" stroke="currentColor" stroke-width="1.7"/><circle cx="12" cy="12" r="2.2" fill="currentColor"/><path d="M12 2v3m0 14v3M2 12h3m14 0h3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></symbol>
+    <symbol id="i-shield-off" viewBox="0 0 24 24"><path d="M12 3 5 6v6c0 4.2 2.9 7.6 7 9 4.1-1.4 7-4.8 7-9V6l-7-3Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="m9.6 9.6 4.8 4.8m0-4.8-4.8 4.8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></symbol>
+    <symbol id="i-sword" viewBox="0 0 24 24"><path d="M18.5 3.5 21 6 9 18l-3-3L18.5 3.5Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="m6.5 14.5 3 3M4.5 19.5 7 17" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></symbol>
+    <symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20s-7-4.4-7-9.4A4.1 4.1 0 0 1 12 7.6 4.1 4.1 0 0 1 19 10.6c0 5-7 9.4-7 9.4Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></symbol>
+    <symbol id="i-crosshair" viewBox="0 0 24 24"><path d="M4 8V5.5A1.5 1.5 0 0 1 5.5 4H8M16 4h2.5A1.5 1.5 0 0 1 20 5.5V8M20 16v2.5a1.5 1.5 0 0 1-1.5 1.5H16M8 20H5.5A1.5 1.5 0 0 1 4 18.5V16" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><circle cx="12" cy="12" r="2.3" stroke="currentColor" stroke-width="1.7"/><path d="M12 5.5v2m0 9v2M5.5 12h2m9 0h2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+    <symbol id="i-forward" viewBox="0 0 24 24"><path d="m5 6 5 6-5 6M12 6l5 6-5 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-feather" viewBox="0 0 24 24"><path d="M18.6 5.4c1.6 6-3 11.2-9.2 11.2H6L15.6 5.4h3Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M4 20 16 8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></symbol>
+    <symbol id="i-umbrella" viewBox="0 0 24 24"><path d="M12 3a8.5 8.5 0 0 1 8.5 8.5H3.5A8.5 8.5 0 0 1 12 3Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M12 11.5V18a2.5 2.5 0 0 0 5 0" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></symbol>
+    <symbol id="i-wind" viewBox="0 0 24 24"><path d="M3 8h9a3 3 0 1 0-3-3M3 16h12a3 3 0 1 1-3 3M4 12h6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></symbol>
+    <symbol id="i-wings" viewBox="0 0 24 24"><path d="M12 5c-2 0-4 1.5-6.5 4.5C3 12 2.5 14 2 16.5c2-1.5 4-2 6-1.5 2 .5 3.5 2 4 3.5.5-1.5 2-3 4-3.5 2-.5 4 0 6 1.5-.5-2.5-1-4.5-3.5-7C16 6.5 14 5 12 5Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></symbol>
+    <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2.5 12S6 6.5 12 6.5 21.5 12 21.5 12 18 17.5 12 17.5 2.5 12 2.5 12Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><circle cx="12" cy="12" r="2.6" stroke="currentColor" stroke-width="1.7"/></symbol>
+    <symbol id="i-eye-off" viewBox="0 0 24 24"><path d="M4 4 20 20" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M9.9 5.3A9.7 9.7 0 0 1 12 5c6 0 9.5 7 9.5 7a17 17 0 0 1-2.7 3.5M6.4 7.7A17 17 0 0 0 2.5 12s3.5 7 9.5 7a9 9 0 0 0 3.1-.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path d="M9.9 10a3 3 0 0 0 4.2 4.1" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></symbol>
+    <symbol id="i-tag" viewBox="0 0 24 24"><path d="M4 4h7l9 9-7 7-9-9V4Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><circle cx="8" cy="8" r="1.6" fill="currentColor"/></symbol>
+    <symbol id="i-tracer" viewBox="0 0 24 24"><path d="M3 18 10 11" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-dasharray="2 3"/><path d="m13 7 8-4-4 8-1.6-1.6L14.6 8.6 13 7Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+    <symbol id="i-layout" viewBox="0 0 24 24"><rect x="3.5" y="4.5" width="17" height="15" rx="2.5" stroke="currentColor" stroke-width="1.7"/><path d="M3.5 9.5h17M9.5 9.5v10" stroke="currentColor" stroke-width="1.7"/></symbol>
+    <symbol id="i-cube" viewBox="0 0 24 24"><path d="m12 3 8 4.5v9L12 21l-8-4.5v-9L12 3Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="m4 7.5 8 4.5 8-4.5M12 12v9" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></symbol>
+    <symbol id="i-pickaxe" viewBox="0 0 24 24"><path d="M4 20 15 9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M8.6 3.9c3.4-.8 6.8.6 9.4 3.4 1.2 1.3 2 2.8 2.4 4.4l-3.4-1-1.7-3-3-1.6-1.4-3.5Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+    <symbol id="i-chest" viewBox="0 0 24 24"><rect x="3.5" y="6.5" width="17" height="13" rx="2" stroke="currentColor" stroke-width="1.7"/><path d="M3.5 11.5h17M12 9.5v4M6 6.5V4.5h12v2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></symbol>
+    <symbol id="i-hammer" viewBox="0 0 24 24"><path d="M14 4.5 19.5 10l-2.8 2.8-5.5-5.5L14 4.5Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="m12.5 11.5 2.5 2.5L5.5 21 3 18.5 10.5 12" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></symbol>
+    <symbol id="i-sprout" viewBox="0 0 24 24"><path d="M12 20v-7" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path d="M12 13C8 13 5 10.5 5 6c4.5 0 7 2.5 7 7Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M12 11c4 0 7-2.5 7-6-4.5 0-7 2-7 6Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></symbol>
+    <symbol id="i-key" viewBox="0 0 24 24"><circle cx="8.5" cy="8.5" r="4" stroke="currentColor" stroke-width="1.7"/><path d="m11.5 11.5 8 8m-3-3 2-2m-5-1 2-2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></symbol>
+    <symbol id="i-mask" viewBox="0 0 24 24"><path d="M5 7.5c4-1.5 10-1.5 14 0 0 4-.8 7.2-2.5 9.5-1.5 2-4 3-4.5 3s-3-1-4.5-3C5.8 14.7 5 11.5 5 7.5Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M8.5 11c1 .6 2 .9 3.5.9s2.5-.3 3.5-.9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+    <symbol id="i-broadcast" viewBox="0 0 24 24"><path d="M12 12v9" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path d="M8.5 8.5a5 5 0 0 0 0 7M15.5 8.5a5 5 0 0 1 0 7" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path d="M6 6a8.5 8.5 0 0 0 0 12M18 6a8.5 8.5 0 0 1 0 12" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><circle cx="12" cy="11" r="1.6" fill="currentColor"/></symbol>
+    <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.7"/><path d="M3.5 12h17M12 3.5c2.5 2.4 3.8 5.3 3.8 8.5S14.5 18.1 12 20.5C9.5 18.1 8.2 15.2 8.2 12S9.5 5.9 12 3.5Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></symbol>
+    <symbol id="i-chart" viewBox="0 0 24 24"><path d="M4 20h16" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><rect x="6" y="11" width="3" height="6" rx="1" stroke="currentColor" stroke-width="1.6"/><rect x="11" y="7" width="3" height="10" rx="1" stroke="currentColor" stroke-width="1.6"/><rect x="16" y="4" width="3" height="13" rx="1" stroke="currentColor" stroke-width="1.6"/></symbol>
+    <symbol id="i-gift" viewBox="0 0 24 24"><rect x="3.5" y="8" width="17" height="12" rx="2" stroke="currentColor" stroke-width="1.7"/><path d="M3.5 12.5h17M12 8v12" stroke="currentColor" stroke-width="1.7"/><path d="M12 8c-1.5 0-4.5-.5-4.5-2.5A2 2 0 0 1 12 5a2 2 0 0 1 4.5.5C16.5 7.5 13.5 8 12 8Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+    <symbol id="i-card" viewBox="0 0 24 24"><rect x="2.5" y="5.5" width="19" height="13" rx="2.5" stroke="currentColor" stroke-width="1.7"/><path d="M2.5 10h19M6 14.5h3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></symbol>
+    <symbol id="i-coin" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.7"/><path d="M12 7v10" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path d="M9.7 9.4c0-1 1-1.6 2.3-1.6s2.3.6 2.3 1.6c0 2.6-4.6 1.3-4.6 3.9 0 1 1 1.6 2.3 1.6s2.3-.6 2.3-1.6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><rect x="6.5" y="2.5" width="11" height="19" rx="3" stroke="currentColor" stroke-width="1.7"/><path d="M10.5 5.5h3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></symbol>
+    <symbol id="i-verified" viewBox="0 0 24 24"><path d="m12 2.8 2.2 1.7 2.7-.3 1 2.6 2.3 1.5-.7 2.7.7 2.7-2.3 1.5-1 2.6-2.7-.3L12 21.2l-2.2-1.7-2.7.3-1-2.6L3.8 15l.7-2.7-.7-2.7 2.3-1.5 1-2.6 2.7.3L12 2.8Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="m9 12 2 2 4-4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.7"/><path d="M12 11v5.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="12" cy="8" r="1.1" fill="currentColor"/></symbol>
+    <symbol id="i-alert" viewBox="0 0 24 24"><path d="M12 4 3 20h18L12 4Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M12 10v4.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="12" cy="17.3" r="1" fill="currentColor"/></symbol>
+    <symbol id="i-fingerprint" viewBox="0 0 24 24"><path d="M6 11a6 6 0 0 1 12 0v3M9 11a3 3 0 0 1 6 0v6M6 15v2M18 17v2M12 17v3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></symbol>
+    <symbol id="i-database" viewBox="0 0 24 24"><ellipse cx="12" cy="6" rx="7.5" ry="3" stroke="currentColor" stroke-width="1.7"/><path d="M4.5 6v12c0 1.7 3.4 3 7.5 3s7.5-1.3 7.5-3V6" stroke="currentColor" stroke-width="1.7"/><path d="M4.5 12c0 1.7 3.4 3 7.5 3s7.5-1.3 7.5-3" stroke="currentColor" stroke-width="1.7"/></symbol>
+    <symbol id="i-monitor" viewBox="0 0 24 24"><rect x="2.5" y="4" width="19" height="12" rx="2" stroke="currentColor" stroke-width="1.7"/><path d="M8 20h8M12 16v4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></symbol>
+    <symbol id="i-wifi" viewBox="0 0 24 24"><path d="M2.5 8.5a14 14 0 0 1 19 0M5.5 12a9.5 9.5 0 0 1 13 0M8.5 15.5a5 5 0 0 1 7 0" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><circle cx="12" cy="19" r="1.3" fill="currentColor"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.7"/><path d="M12 7v5l3 2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-grid" viewBox="0 0 24 24"><rect x="4" y="4" width="7" height="7" rx="1.6" stroke="currentColor" stroke-width="1.7"/><rect x="13" y="4" width="7" height="7" rx="1.6" stroke="currentColor" stroke-width="1.7"/><rect x="4" y="13" width="7" height="7" rx="1.6" stroke="currentColor" stroke-width="1.7"/><rect x="13" y="13" width="7" height="7" rx="1.6" stroke="currentColor" stroke-width="1.7"/></symbol>
+    <symbol id="i-crown" viewBox="0 0 24 24"><path d="m3.5 17.5-1-9.5 5.2 3.2L12 4.5l4.3 6.7 5.2-3.2-1 9.5h-17Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></symbol>
+    <symbol id="i-bug" viewBox="0 0 24 24"><path d="M8 8.5a4 4 0 1 1 8 0v5.5a4 4 0 0 1-8 0V8.5Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M4 10.5h2M4 14.5h2M18 10.5h2M18 14.5h2M8 5.5 6.4 3.9M16 5.5l1.6-1.6M12 18v3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+    <symbol id="i-spark" viewBox="0 0 24 24"><path d="m12 3 2.1 5.9L20 11l-5.9 2.1L12 19l-2.1-5.9L4 11l5.9-2.1L12 3Z" fill="currentColor"/></symbol>
+    <symbol id="i-bolt-circle" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.7"/><path d="M13 6.5 8.5 13H12l-1 4.5 4.5-6.5H12l1-4.5Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></symbol>
   </defs>
 </svg>
 
@@ -102,12 +155,12 @@
     </a>
 
     <nav class="nav" aria-label="Основная навигация">
-      <a class="nav__link" href="#bypass">Обходы</a>
-      <a class="nav__link" href="#performance">FPS</a>
-      <a class="nav__link" href="#modules">Модули</a>
-      <a class="nav__link" href="#gui">ClickGUI</a>
-      <a class="nav__link" href="#pricing">Тарифы</a>
-      <a class="nav__link" href="#faq">FAQ</a>
+      <a class="nav__link" href="#bypass"><svg><use href="#i-shield"></use></svg>Обходы</a>
+      <a class="nav__link" href="#performance"><svg><use href="#i-gauge"></use></svg>FPS</a>
+      <a class="nav__link" href="#modules"><svg><use href="#i-tune"></use></svg>Модули</a>
+      <a class="nav__link" href="#gui"><svg><use href="#i-palette"></use></svg>ClickGUI</a>
+      <a class="nav__link" href="#pricing"><svg><use href="#i-cart"></use></svg>Тарифы</a>
+      <a class="nav__link" href="#faq"><svg><use href="#i-info"></use></svg>FAQ</a>
     </nav>
 
     <div class="appbar__actions">
@@ -191,18 +244,22 @@
 
       <dl class="hero__stats reveal" data-delay="4">
         <div class="stat">
+          <span class="stat__icon"><svg><use href="#i-users"></use></svg></span>
           <dt>Игроков</dt>
           <dd><span class="stat__num" data-count="24180">0</span><span class="plus">+</span></dd>
         </div>
         <div class="stat">
+          <span class="stat__icon"><svg><use href="#i-gauge"></use></svg></span>
           <dt>Средний прирост FPS</dt>
           <dd><span class="plus">+</span><span class="stat__num" data-count="164">0</span><span class="plus">%</span></dd>
         </div>
         <div class="stat">
+          <span class="stat__icon"><svg><use href="#i-tune"></use></svg></span>
           <dt>Модулей</dt>
           <dd><span class="stat__num" data-count="184">0</span></dd>
         </div>
         <div class="stat">
+          <span class="stat__icon"><svg><use href="#i-shield"></use></svg></span>
           <dt>Аптайм</dt>
           <dd><span class="stat__num" data-count="99" data-suffix=".9">0</span><span class="plus">%</span></dd>
         </div>
@@ -233,23 +290,23 @@
             </div>
 
             <div class="mod-row is-on">
-              <span class="mod-row__name">Aura <b>R</b></span>
+              <span class="mod-row__name"><svg class="mod-row__icon"><use href="#i-target"></use></svg>Aura <b>R</b></span>
               <span class="sw sw--on"></span>
             </div>
             <div class="mod-row is-on">
-              <span class="mod-row__name">Velocity <b>V</b></span>
+              <span class="mod-row__name"><svg class="mod-row__icon"><use href="#i-shield-off"></use></svg>Velocity <b>V</b></span>
               <span class="sw sw--on"></span>
             </div>
             <div class="mod-row">
-              <span class="mod-row__name">Criticals <b>C</b></span>
+              <span class="mod-row__name"><svg class="mod-row__icon"><use href="#i-sword"></use></svg>Criticals <b>C</b></span>
               <span class="sw"></span>
             </div>
             <div class="mod-row is-on">
-              <span class="mod-row__name">AutoTotem <b>T</b></span>
+              <span class="mod-row__name"><svg class="mod-row__icon"><use href="#i-heart"></use></svg>AutoTotem <b>T</b></span>
               <span class="sw sw--on"></span>
             </div>
             <div class="mod-row">
-              <span class="mod-row__name">TriggerBot <b>G</b></span>
+              <span class="mod-row__name"><svg class="mod-row__icon"><use href="#i-crosshair"></use></svg>TriggerBot <b>G</b></span>
               <span class="sw"></span>
             </div>
 
@@ -290,10 +347,10 @@
   <div class="hero__marquee" aria-hidden="true">
     <div class="marquee">
       <div class="marquee__track">
-        <span>GrimAC</span><i>◆</i><span>Matrix</span><i>◆</i><span>Vulcan</span><i>◆</i><span>NCP</span><i>◆</i><span>Intave</span><i>◆</i>
-        <span>FunTime</span><i>◆</i><span>HolyWorld</span><i>◆</i><span>ReallyWorld</span><i>◆</i><span>SpookyTime</span><i>◆</i><span>MineBlaze</span><i>◆</i>
-        <span>GrimAC</span><i>◆</i><span>Matrix</span><i>◆</i><span>Vulcan</span><i>◆</i><span>NCP</span><i>◆</i><span>Intave</span><i>◆</i>
-        <span>FunTime</span><i>◆</i><span>HolyWorld</span><i>◆</i><span>ReallyWorld</span><i>◆</i><span>SpookyTime</span><i>◆</i><span>MineBlaze</span><i>◆</i>
+        <span>GrimAC</span><i><svg><use href="#i-spark"></use></svg></i><span>Matrix</span><i><svg><use href="#i-spark"></use></svg></i><span>Vulcan</span><i><svg><use href="#i-spark"></use></svg></i><span>NCP</span><i><svg><use href="#i-spark"></use></svg></i><span>Intave</span><i><svg><use href="#i-spark"></use></svg></i>
+        <span>FunTime</span><i><svg><use href="#i-spark"></use></svg></i><span>HolyWorld</span><i><svg><use href="#i-spark"></use></svg></i><span>ReallyWorld</span><i><svg><use href="#i-spark"></use></svg></i><span>SpookyTime</span><i><svg><use href="#i-spark"></use></svg></i><span>MineBlaze</span><i><svg><use href="#i-spark"></use></svg></i>
+        <span>GrimAC</span><i><svg><use href="#i-spark"></use></svg></i><span>Matrix</span><i><svg><use href="#i-spark"></use></svg></i><span>Vulcan</span><i><svg><use href="#i-spark"></use></svg></i><span>NCP</span><i><svg><use href="#i-spark"></use></svg></i><span>Intave</span><i><svg><use href="#i-spark"></use></svg></i>
+        <span>FunTime</span><i><svg><use href="#i-spark"></use></svg></i><span>HolyWorld</span><i><svg><use href="#i-spark"></use></svg></i><span>ReallyWorld</span><i><svg><use href="#i-spark"></use></svg></i><span>SpookyTime</span><i><svg><use href="#i-spark"></use></svg></i><span>MineBlaze</span><i><svg><use href="#i-spark"></use></svg></i>
       </div>
     </div>
   </div>
@@ -317,31 +374,37 @@
         </div>
         <ul class="matrix" id="matrixList">
           <li class="matrix__row">
+            <span class="matrix__logo"><svg><use href="#i-shield"></use></svg></span>
             <span class="matrix__name"><b>GrimAC</b><small>2.3 · FunTime, HolyWorld</small></span>
             <span class="status status--ok">Работает</span>
             <span class="matrix__ver">v4.2.1</span>
           </li>
           <li class="matrix__row">
+            <span class="matrix__logo"><svg><use href="#i-cube"></use></svg></span>
             <span class="matrix__name"><b>Matrix</b><small>6.7 · ReallyWorld</small></span>
             <span class="status status--ok">Работает</span>
             <span class="matrix__ver">v4.2.1</span>
           </li>
           <li class="matrix__row">
+            <span class="matrix__logo"><svg><use href="#i-bolt"></use></svg></span>
             <span class="matrix__name"><b>Vulcan</b><small>2.9 · SpookyTime</small></span>
             <span class="status status--ok">Работает</span>
             <span class="matrix__ver">v4.2.0</span>
           </li>
           <li class="matrix__row">
+            <span class="matrix__logo"><svg><use href="#i-server"></use></svg></span>
             <span class="matrix__name"><b>NoCheatPlus</b><small>legacy · MineBlaze</small></span>
             <span class="status status--ok">Работает</span>
             <span class="matrix__ver">v4.1.8</span>
           </li>
           <li class="matrix__row">
+            <span class="matrix__logo"><svg><use href="#i-bug"></use></svg></span>
             <span class="matrix__name"><b>Intave</b><small>14.x · тест-группа</small></span>
             <span class="status status--warn">Тестируется</span>
             <span class="matrix__ver">beta</span>
           </li>
           <li class="matrix__row">
+            <span class="matrix__logo"><svg><use href="#i-eye"></use></svg></span>
             <span class="matrix__name"><b>Verus</b><small>внутренний стенд</small></span>
             <span class="status status--wait">В работе</span>
             <span class="matrix__ver">—</span>
@@ -372,16 +435,16 @@
     </div>
 
     <div class="servers reveal">
-      <span class="servers__label">Проверено на серверах</span>
+      <span class="servers__label"><svg><use href="#i-globe"></use></svg>Проверено на серверах</span>
       <div class="servers__list">
-        <span class="server-chip">FunTime</span>
-        <span class="server-chip">HolyWorld</span>
-        <span class="server-chip">ReallyWorld</span>
-        <span class="server-chip">SpookyTime</span>
-        <span class="server-chip">MineBlaze</span>
-        <span class="server-chip">Sunrise</span>
-        <span class="server-chip">HypeMC</span>
-        <span class="server-chip">Mustery</span>
+        <span class="server-chip"><svg><use href="#i-globe"></use></svg>FunTime</span>
+        <span class="server-chip"><svg><use href="#i-globe"></use></svg>HolyWorld</span>
+        <span class="server-chip"><svg><use href="#i-globe"></use></svg>ReallyWorld</span>
+        <span class="server-chip"><svg><use href="#i-globe"></use></svg>SpookyTime</span>
+        <span class="server-chip"><svg><use href="#i-globe"></use></svg>MineBlaze</span>
+        <span class="server-chip"><svg><use href="#i-globe"></use></svg>Sunrise</span>
+        <span class="server-chip"><svg><use href="#i-globe"></use></svg>HypeMC</span>
+        <span class="server-chip"><svg><use href="#i-globe"></use></svg>Mustery</span>
       </div>
     </div>
   </div>
@@ -428,17 +491,17 @@
         </div>
 
         <div class="presets">
-          <div class="presets__title">Пресет рендера</div>
+          <div class="presets__title"><svg><use href="#i-tune"></use></svg>Пресет рендера</div>
           <div class="segmented segmented--stack" id="presetSeg" role="tablist" aria-label="Пресет рендера">
             <button class="segmented__item is-active ripple" role="tab" aria-selected="true" data-preset="max">Максимум FPS</button>
             <button class="segmented__item ripple" role="tab" aria-selected="false" data-preset="balanced">Баланс</button>
             <button class="segmented__item ripple" role="tab" aria-selected="false" data-preset="quality">Качество</button>
           </div>
           <ul class="presets__list" id="presetList">
-            <li><span>Частицы</span><b>Минимум</b></li>
-            <li><span>Тени сущностей</span><b>Выкл</b></li>
-            <li><span>Дистанция прорисовки</span><b>8 чанков</b></li>
-            <li><span>Оптимизация HUD</span><b>Вкл</b></li>
+            <li><span><svg><use href="#i-spark"></use></svg>Частицы</span><b>Минимум</b></li>
+            <li><span><svg><use href="#i-sun"></use></svg>Тени сущностей</span><b>Выкл</b></li>
+            <li><span><svg><use href="#i-layers"></use></svg>Дистанция прорисовки</span><b>8 чанков</b></li>
+            <li><span><svg><use href="#i-gauge"></use></svg>Оптимизация HUD</span><b>Вкл</b></li>
           </ul>
           <div class="presets__est">
             <span>Ожидаемый FPS</span>
@@ -453,38 +516,38 @@
         <div class="card__icon"><svg><use href="#i-cpu"></use></svg></div>
         <h3>Умный менеджер памяти</h3>
         <p>Переиспользование буферов и контроль GC-пауз: просадки на сборке мусора больше не режут кадр.</p>
-        <span class="card__tag">до −87% GC-фризов</span>
+        <span class="card__tag"><svg><use href="#i-cpu"></use></svg>до −87% GC-фризов</span>
       </article>
       <article class="card card--outlined reveal" data-delay="1">
         <div class="card__icon"><svg><use href="#i-layers"></use></svg></div>
         <h3>Батчинг вызовов</h3>
         <p>Отрисовка объединяется в пакеты, а модели и текстуры кэшируются между кадрами.</p>
-        <span class="card__tag">−41% draw calls</span>
+        <span class="card__tag"><svg><use href="#i-layers"></use></svg>−41% draw calls</span>
       </article>
       <article class="card card--outlined reveal" data-delay="2">
         <div class="card__icon"><svg><use href="#i-bolt"></use></svg></div>
         <h3>Асинхронные чанки</h3>
         <p>Сборка и загрузка мешей идут в отдельных потоках — вход в мир без «заморозки» на 3 секунды.</p>
-        <span class="card__tag">−72% времени загрузки</span>
+        <span class="card__tag"><svg><use href="#i-bolt"></use></svg>−72% времени загрузки</span>
       </article>
       <article class="card card--outlined reveal" data-delay="3">
         <div class="card__icon"><svg><use href="#i-sparkles"></use></svg></div>
         <h3>Чистый рендер</h3>
         <p>Отключаются невидимые частицы, лишние хитбоксы и эффекты, которые вы не видите, но железо считает.</p>
-        <span class="card__tag">+38 FPS в замесе</span>
+        <span class="card__tag"><svg><use href="#i-gauge"></use></svg>+38 FPS в замесе</span>
       </article>
     </div>
 
     <div class="compat reveal">
-      <span class="compat__label">Совместимость без конфликтов</span>
+      <span class="compat__label"><svg><use href="#i-check"></use></svg>Совместимость без конфликтов</span>
       <div class="compat__list">
-        <span class="chip chip--ghost">Sodium</span>
-        <span class="chip chip--ghost">Iris Shaders</span>
-        <span class="chip chip--ghost">Lithium</span>
-        <span class="chip chip--ghost">Fabric API</span>
-        <span class="chip chip--ghost">Mod Menu</span>
-        <span class="chip chip--ghost">Xaero's Map</span>
-        <span class="chip chip--ghost">ViaFabric</span>
+        <span class="chip chip--ghost"><svg><use href="#i-check"></use></svg>Sodium</span>
+        <span class="chip chip--ghost"><svg><use href="#i-check"></use></svg>Iris Shaders</span>
+        <span class="chip chip--ghost"><svg><use href="#i-check"></use></svg>Lithium</span>
+        <span class="chip chip--ghost"><svg><use href="#i-check"></use></svg>Fabric API</span>
+        <span class="chip chip--ghost"><svg><use href="#i-check"></use></svg>Mod Menu</span>
+        <span class="chip chip--ghost"><svg><use href="#i-check"></use></svg>Xaero's Map</span>
+        <span class="chip chip--ghost"><svg><use href="#i-check"></use></svg>ViaFabric</span>
       </div>
     </div>
   </div>
@@ -502,12 +565,12 @@
 
     <div class="modules__toolbar reveal">
       <div class="chipset" id="moduleFilters">
-        <button class="chip chip--filter is-active ripple" data-cat="all">Все <span>24</span></button>
-        <button class="chip chip--filter ripple" data-cat="combat">Бой</button>
-        <button class="chip chip--filter ripple" data-cat="move">Движение</button>
-        <button class="chip chip--filter ripple" data-cat="render">Рендер</button>
-        <button class="chip chip--filter ripple" data-cat="world">Мир</button>
-        <button class="chip chip--filter ripple" data-cat="player">Игрок</button>
+        <button class="chip chip--filter is-active ripple" data-cat="all"><svg><use href="#i-grid"></use></svg>Все <span>24</span></button>
+        <button class="chip chip--filter ripple" data-cat="combat"><svg><use href="#i-cursor"></use></svg>Бой</button>
+        <button class="chip chip--filter ripple" data-cat="move"><svg><use href="#i-rocket"></use></svg>Движение</button>
+        <button class="chip chip--filter ripple" data-cat="render"><svg><use href="#i-layers"></use></svg>Рендер</button>
+        <button class="chip chip--filter ripple" data-cat="world"><svg><use href="#i-server"></use></svg>Мир</button>
+        <button class="chip chip--filter ripple" data-cat="player"><svg><use href="#i-shield"></use></svg>Игрок</button>
       </div>
       <label class="search" for="moduleSearch">
         <svg><use href="#i-search"></use></svg>
@@ -660,6 +723,7 @@ client.on(<span class="c-str">'tick'</span>, () =&gt; {
     <div class="plans">
       <article class="plan reveal">
         <header class="plan__head">
+          <span class="plan__icon"><svg><use href="#i-feather"></use></svg></span>
           <h3>Enuda Lite</h3>
           <p>Для тех, кто хочет плавность и базовые модули.</p>
         </header>
@@ -681,6 +745,7 @@ client.on(<span class="c-str">'tick'</span>, () =&gt; {
       <article class="plan plan--featured reveal" data-delay="1">
         <span class="plan__badge">Выбор игроков</span>
         <header class="plan__head">
+          <span class="plan__icon"><svg><use href="#i-bolt-circle"></use></svg></span>
           <h3>Enuda Pro</h3>
           <p>Обходы, все модули и облако. Оптимальный вариант.</p>
         </header>
@@ -701,6 +766,7 @@ client.on(<span class="c-str">'tick'</span>, () =&gt; {
 
       <article class="plan reveal" data-delay="2">
         <header class="plan__head">
+          <span class="plan__icon"><svg><use href="#i-crown"></use></svg></span>
           <h3>Enuda Max</h3>
           <p>Приватные методы и максимальный приоритет.</p>
         </header>
@@ -722,7 +788,7 @@ client.on(<span class="c-str">'tick'</span>, () =&gt; {
 
     <div class="pricing__note reveal">
       <div class="pricing__pay">
-        <span>Оплата</span>
+        <span><svg><use href="#i-card"></use></svg>Оплата</span>
         <div class="pay-methods">
           <span class="pay">СБП</span>
           <span class="pay">МИР</span>
@@ -731,7 +797,7 @@ client.on(<span class="c-str">'tick'</span>, () =&gt; {
         </div>
       </div>
       <div class="pricing__pay">
-        <span>Сброс HWID</span>
+        <span><svg><use href="#i-fingerprint"></use></svg>Сброс HWID</span>
         <div class="pay-methods">
           <span class="pay">1 раз в 30 дней — бесплатно</span>
           <span class="pay">доп. сброс — 99 ₽</span>
@@ -754,32 +820,32 @@ client.on(<span class="c-str">'tick'</span>, () =&gt; {
       <figure class="review reveal">
         <div class="review__stars" aria-label="Оценка 5 из 5"><svg><use href="#i-star"></use></svg><svg><use href="#i-star"></use></svg><svg><use href="#i-star"></use></svg><svg><use href="#i-star"></use></svg><svg><use href="#i-star"></use></svg></div>
         <blockquote>За неделю на FunTime ни одного флага. Ротации плавные, а ClickGUI — отдельный вид искусства, реально приятно пользоваться.</blockquote>
-        <figcaption><span class="avatar">К</span><span><b>Кирилл</b><small>Pro · 124 дня</small></span></figcaption>
+        <figcaption><span class="avatar">К</span><span><b>Кирилл <svg class="review__verified"><use href="#i-verified"></use></svg></b><small>Pro · 124 дня</small></span></figcaption>
       </figure>
       <figure class="review reveal" data-delay="1">
         <div class="review__stars" aria-label="Оценка 5 из 5"><svg><use href="#i-star"></use></svg><svg><use href="#i-star"></use></svg><svg><use href="#i-star"></use></svg><svg><use href="#i-star"></use></svg><svg><use href="#i-star"></use></svg></div>
         <blockquote>На ноутбуке с 8 ГБ было 60–80 FPS. Поставил Enuda — стабильно 190+, чанки грузятся без заморозки. Разница как между HDD и SSD.</blockquote>
-        <figcaption><span class="avatar">Д</span><span><b>Даниил</b><small>Pro · 61 день</small></span></figcaption>
+        <figcaption><span class="avatar">Д</span><span><b>Даниил <svg class="review__verified"><use href="#i-verified"></use></svg></b><small>Pro · 61 день</small></span></figcaption>
       </figure>
       <figure class="review reveal" data-delay="2">
         <div class="review__stars" aria-label="Оценка 5 из 5"><svg><use href="#i-star"></use></svg><svg><use href="#i-star"></use></svg><svg><use href="#i-star"></use></svg><svg><use href="#i-star"></use></svg><svg><use href="#i-star"></use></svg></div>
         <blockquote>Обход Vulcan на SpookyTime работает как обещали, а обновление прилетело через сутки после патча античита. Такое отношение к делу редкость.</blockquote>
-        <figcaption><span class="avatar">М</span><span><b>Максим</b><small>Max · 210 дней</small></span></figcaption>
+        <figcaption><span class="avatar">М</span><span><b>Максим <svg class="review__verified"><use href="#i-verified"></use></svg></b><small>Max · 210 дней</small></span></figcaption>
       </figure>
       <figure class="review reveal">
         <div class="review__stars" aria-label="Оценка 5 из 5"><svg><use href="#i-star"></use></svg><svg><use href="#i-star"></use></svg><svg><use href="#i-star"></use></svg><svg><use href="#i-star"></use></svg><svg><use href="#i-star"></use></svg></div>
         <blockquote>Конфиги в облаке — то, чего не хватало. Закинул свой пресет друзьям ссылкой, они загрузили за секунду. Никаких файлов вручную.</blockquote>
-        <figcaption><span class="avatar">Н</span><span><b>Никита</b><small>Pro · 38 дней</small></span></figcaption>
+        <figcaption><span class="avatar">Н</span><span><b>Никита <svg class="review__verified"><use href="#i-verified"></use></svg></b><small>Pro · 38 дней</small></span></figcaption>
       </figure>
       <figure class="review reveal" data-delay="1">
         <div class="review__stars" aria-label="Оценка 4 из 5"><svg><use href="#i-star"></use></svg><svg><use href="#i-star"></use></svg><svg><use href="#i-star"></use></svg><svg><use href="#i-star"></use></svg><svg class="is-off"><use href="#i-star"></use></svg></div>
         <blockquote>Взял Lite ради оптимизации — за свои деньги отлично. Минус балл за то, что обходы только в Pro, но это уже вопрос тарифа, а не клиента.</blockquote>
-        <figcaption><span class="avatar">А</span><span><b>Артём</b><small>Lite · 90 дней</small></span></figcaption>
+        <figcaption><span class="avatar">А</span><span><b>Артём <svg class="review__verified"><use href="#i-verified"></use></svg></b><small>Lite · 90 дней</small></span></figcaption>
       </figure>
       <figure class="review reveal" data-delay="2">
         <div class="review__stars" aria-label="Оценка 5 из 5"><svg><use href="#i-star"></use></svg><svg><use href="#i-star"></use></svg><svg><use href="#i-star"></use></svg><svg><use href="#i-star"></use></svg><svg><use href="#i-star"></use></svg></div>
         <blockquote>Написал в поддержку в три ночи — ответили за шесть минут и бесплатно сбросили HWID после смены материнки. Это уровень.</blockquote>
-        <figcaption><span class="avatar">Е</span><span><b>Егор</b><small>Max · 152 дня</small></span></figcaption>
+        <figcaption><span class="avatar">Е</span><span><b>Егор <svg class="review__verified"><use href="#i-verified"></use></svg></b><small>Max · 152 дня</small></span></figcaption>
       </figure>
     </div>
   </div>
@@ -800,7 +866,7 @@ client.on(<span class="c-str">'tick'</span>, () =&gt; {
     <div class="faq reveal" data-delay="1">
       <div class="acc">
         <button class="acc__head" aria-expanded="true">
-          <span>На какой версии Minecraft работает Enuda?</span>
+          <span><svg><use href="#i-monitor"></use></svg>На какой версии Minecraft работает Enuda?</span>
           <svg class="acc__chev"><use href="#i-chevron"></use></svg>
         </button>
         <div class="acc__panel"><div class="acc__inner">
@@ -812,7 +878,7 @@ client.on(<span class="c-str">'tick'</span>, () =&gt; {
 
       <div class="acc">
         <button class="acc__head" aria-expanded="false">
-          <span>Это забанят?</span>
+          <span><svg><use href="#i-shield"></use></svg>Это забанят?</span>
           <svg class="acc__chev"><use href="#i-chevron"></use></svg>
         </button>
         <div class="acc__panel"><div class="acc__inner">
@@ -825,7 +891,7 @@ client.on(<span class="c-str">'tick'</span>, () =&gt; {
 
       <div class="acc">
         <button class="acc__head" aria-expanded="false">
-          <span>Какие античиты обходятся?</span>
+          <span><svg><use href="#i-bug"></use></svg>Какие античиты обходятся?</span>
           <svg class="acc__chev"><use href="#i-chevron"></use></svg>
         </button>
         <div class="acc__panel"><div class="acc__inner">
@@ -837,7 +903,7 @@ client.on(<span class="c-str">'tick'</span>, () =&gt; {
 
       <div class="acc">
         <button class="acc__head" aria-expanded="false">
-          <span>Нужен ли мощный компьютер?</span>
+          <span><svg><use href="#i-cpu"></use></svg>Нужен ли мощный компьютер?</span>
           <svg class="acc__chev"><use href="#i-chevron"></use></svg>
         </button>
         <div class="acc__panel"><div class="acc__inner">
@@ -849,7 +915,7 @@ client.on(<span class="c-str">'tick'</span>, () =&gt; {
 
       <div class="acc">
         <button class="acc__head" aria-expanded="false">
-          <span>Как оплатить и когда придёт ключ?</span>
+          <span><svg><use href="#i-card"></use></svg>Как оплатить и когда придёт ключ?</span>
           <svg class="acc__chev"><use href="#i-chevron"></use></svg>
         </button>
         <div class="acc__panel"><div class="acc__inner">
@@ -861,7 +927,7 @@ client.on(<span class="c-str">'tick'</span>, () =&gt; {
 
       <div class="acc">
         <button class="acc__head" aria-expanded="false">
-          <span>Совместим ли клиент с шейдерами и другими модами?</span>
+          <span><svg><use href="#i-layers"></use></svg>Совместим ли клиент с шейдерами и другими модами?</span>
           <svg class="acc__chev"><use href="#i-chevron"></use></svg>
         </button>
         <div class="acc__panel"><div class="acc__inner">
@@ -873,7 +939,7 @@ client.on(<span class="c-str">'tick'</span>, () =&gt; {
 
       <div class="acc">
         <button class="acc__head" aria-expanded="false">
-          <span>Что делать после смены ПК?</span>
+          <span><svg><use href="#i-fingerprint"></use></svg>Что делать после смены ПК?</span>
           <svg class="acc__chev"><use href="#i-chevron"></use></svg>
         </button>
         <div class="acc__panel"><div class="acc__inner">
@@ -940,7 +1006,7 @@ client.on(<span class="c-str">'tick'</span>, () =&gt; {
     </div>
 
     <nav class="footer__col" aria-label="Клиент">
-      <h4>Клиент</h4>
+      <h4><svg><use href="#i-monitor"></use></svg>Клиент</h4>
       <a href="#bypass">Обходы</a>
       <a href="#performance">Производительность</a>
       <a href="#modules">Модули</a>
@@ -949,7 +1015,7 @@ client.on(<span class="c-str">'tick'</span>, () =&gt; {
     </nav>
 
     <nav class="footer__col" aria-label="Помощь">
-      <h4>Помощь</h4>
+      <h4><svg><use href="#i-info"></use></svg>Помощь</h4>
       <a href="#faq">FAQ</a>
       <a href="#" data-open-download>Установка</a>
       <a href="#">Сброс HWID</a>
@@ -958,7 +1024,7 @@ client.on(<span class="c-str">'tick'</span>, () =&gt; {
     </nav>
 
     <nav class="footer__col" aria-label="Документы">
-      <h4>Документы</h4>
+      <h4><svg><use href="#i-lock"></use></svg>Документы</h4>
       <a href="#">Пользовательское соглашение</a>
       <a href="#">Политика конфиденциальности</a>
       <a href="#">Возврат средств</a>

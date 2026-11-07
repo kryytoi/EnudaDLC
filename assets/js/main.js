@@ -47,7 +47,7 @@
   function applyTheme(theme) {
     document.documentElement.dataset.theme = theme;
     localStorage.setItem("enuda-theme", theme);
-    if (themeMeta) themeMeta.content = theme === "dark" ? "#0b0f0d" : "#f6fbf6";
+    if (themeMeta) themeMeta.content = theme === "dark" ? "#0d0914" : "#fcf8fe";
   }
 
   const savedTheme = localStorage.getItem("enuda-theme");
@@ -244,9 +244,12 @@
     const html = `
       <article class="module ${mod.on ? "is-on" : ""}" data-id="${mod.id}">
         <div class="module__top">
-          <div>
-            <span class="module__name">${mod.name}</span>
-            <span class="module__cat">${CAT_LABEL[mod.cat]}</span>
+          <div class="module__title">
+            <span class="module__icon"><svg><use href="#${mod.icon}"></use></svg></span>
+            <span>
+              <span class="module__name">${mod.name}</span>
+              <span class="module__cat">${CAT_LABEL[mod.cat]}</span>
+            </span>
           </div>
           <label class="switch">
             <input type="checkbox" ${mod.on ? "checked" : ""} aria-label="Включить ${mod.name}">
@@ -342,7 +345,7 @@
     demoList.innerHTML = items
       .map(
         (m) => `<div class="module-row ${m.on ? "is-on" : ""} ${m.id === demoSelected ? "is-selected" : ""}" data-id="${m.id}">
-          <span class="module-row__name">${m.name}${m.bind !== "—" ? `<span class="module-row__bind">${m.bind}</span>` : ""}</span>
+          <span class="module-row__name"><svg class="module-row__icon"><use href="#${m.icon}"></use></svg>${m.name}${m.bind !== "—" ? `<span class="module-row__bind">${m.bind}</span>` : ""}</span>
           <label class="switch">
             <input type="checkbox" ${m.on ? "checked" : ""} aria-label="Включить ${m.name}">
             <span class="switch__track"><span class="switch__thumb"></span></span>
@@ -415,10 +418,10 @@
   });
 
   const accentThemes = [
-    { id: "", label: "Emerald" },
-    { id: "tertiary", label: "Lilac" },
-    { id: "cyan", label: "Cyan" },
-    { id: "rose", label: "Rose" },
+    { id: "", label: "Lavender" },
+    { id: "orchid", label: "Orchid" },
+    { id: "magenta", label: "Magenta" },
+    { id: "ice", label: "Ice" },
     { id: "amber", label: "Amber" }
   ];
   let accentIndex = 0;
@@ -481,15 +484,15 @@
   const presets = {
     max: {
       fps: 312,
-      rows: [["Частицы", "Минимум"], ["Тени сущностей", "Выкл"], ["Дистанция прорисовки", "8 чанков"], ["Оптимизация HUD", "Вкл"]]
+      rows: [["Частицы", "Минимум", "i-spark"], ["Тени сущностей", "Выкл", "i-sun"], ["Дистанция прорисовки", "8 чанков", "i-layers"], ["Оптимизация HUD", "Вкл", "i-gauge"]]
     },
     balanced: {
       fps: 254,
-      rows: [["Частицы", "Снижено"], ["Тени сущностей", "Мягкие"], ["Дистанция прорисовки", "12 чанков"], ["Оптимизация HUD", "Вкл"]]
+      rows: [["Частицы", "Снижено", "i-spark"], ["Тени сущностей", "Мягкие", "i-sun"], ["Дистанция прорисовки", "12 чанков", "i-layers"], ["Оптимизация HUD", "Вкл", "i-gauge"]]
     },
     quality: {
       fps: 186,
-      rows: [["Частицы", "Все"], ["Тени сущностей", "Вкл"], ["Дистанция прорисовки", "16 чанков"], ["Оптимизация HUD", "Вкл"]]
+      rows: [["Частицы", "Все", "i-spark"], ["Тени сущностей", "Вкл", "i-sun"], ["Дистанция прорисовки", "16 чанков", "i-layers"], ["Оптимизация HUD", "Вкл", "i-gauge"]]
     }
   };
   const presetList = $("#presetList");
@@ -506,7 +509,9 @@
     btn.setAttribute("aria-selected", "true");
     const preset = presets[btn.dataset.preset];
     if (!preset) return;
-    presetList.innerHTML = preset.rows.map(([k, v]) => `<li><span>${k}</span><b>${v}</b></li>`).join("");
+    presetList.innerHTML = preset.rows
+      .map(([k, v, icon]) => `<li><span><svg><use href="#${icon}"></use></svg>${k}</span><b>${v}</b></li>`)
+      .join("");
     if (!reduced) {
       presetFps.animate([{ opacity: 0.3, transform: "translateY(4px)" }, { opacity: 1, transform: "none" }], {
         duration: 320,
