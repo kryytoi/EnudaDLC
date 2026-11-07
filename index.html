@@ -1,0 +1,1031 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Enuda Client — обходы античитов и максимум FPS для Minecraft 1.21.11 (Fabric)</title>
+<meta name="description" content="Enuda — клиент для Minecraft Fabric 1.21.11: обходы GrimAC, Matrix, Vulcan и NCP, оптимизация рендера до +214% FPS, ClickGUI в стиле Material 3, облачные конфиги и 180+ модулей.">
+<meta name="theme-color" content="#0b0f0d">
+<meta property="og:title" content="Enuda Client — обходы, которые работают. FPS, который решает.">
+<meta property="og:description" content="Модификация для Minecraft Fabric 1.21.11: обходы античитов, оптимизация FPS, 180+ модулей и ClickGUI на Material 3.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="assets/img/hero-bg.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/img/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/tokens.css">
+<link rel="stylesheet" href="assets/css/components.css">
+<link rel="stylesheet" href="assets/css/site.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Enuda Client",
+  "applicationCategory": "GameApplication",
+  "operatingSystem": "Windows 10, Windows 11, macOS, Linux",
+  "description": "Клиент для Minecraft Fabric 1.21.11: обходы античитов GrimAC, Matrix, Vulcan и NCP, оптимизация FPS, 184 модуля и ClickGUI в стиле Material 3.",
+  "softwareVersion": "4.2.1",
+  "offers": [
+    { "@type": "Offer", "name": "Enuda Lite · 30 дней", "price": "149", "priceCurrency": "RUB" },
+    { "@type": "Offer", "name": "Enuda Pro · 30 дней", "price": "249", "priceCurrency": "RUB" },
+    { "@type": "Offer", "name": "Enuda Max · 30 дней", "price": "399", "priceCurrency": "RUB" }
+  ]
+}
+</script>
+</head>
+<body>
+
+<a class="skip-link" href="#home">Перейти к содержимому</a>
+<noscript>
+  <div class="noscript">Для интерактивных демо (модули, ClickGUI, тарифы) нужен JavaScript.</div>
+</noscript>
+
+<!-- ============ ICON SPRITE ============ -->
+<svg aria-hidden="true" focusable="false" style="position:absolute;width:0;height:0;overflow:hidden">
+  <defs>
+    <symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13 2 4.5 13.5H11l-1 8.5 9-12h-6.5L13 2Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3 5 6v6c0 4.2 2.9 7.6 7 9 4.1-1.4 7-4.8 7-9V6l-7-3Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="m9 12 2.2 2.2L15.5 10" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-tune" viewBox="0 0 24 24"><path d="M4 7h10M18 7h2M4 17h4M12 17h8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><circle cx="16" cy="7" r="2.2" stroke="currentColor" stroke-width="1.7"/><circle cx="10" cy="17" r="2.2" stroke="currentColor" stroke-width="1.7"/></symbol>
+    <symbol id="i-palette" viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 0 18c1.4 0 2-.9 2-1.9 0-1.5-1.4-1.9-1.4-3.1 0-1 .8-1.8 1.8-1.8h1.8A4.8 4.8 0 0 0 21 9.4C21 5.8 16.9 3 12 3Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><circle cx="8" cy="10" r="1.3" fill="currentColor"/><circle cx="12" cy="7.4" r="1.3" fill="currentColor"/><circle cx="16" cy="9" r="1.3" fill="currentColor"/></symbol>
+    <symbol id="i-cloud" viewBox="0 0 24 24"><path d="M7.5 19a4.5 4.5 0 0 1-.4-9A5.6 5.6 0 0 1 17.8 10a4 4 0 0 1 .2 9H7.5Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="m12 15.5 0-5m0 0-2 2m2-2 2 2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-code" viewBox="0 0 24 24"><path d="m8.5 8-4.5 4 4.5 4m7-8 4.5 4-4.5 4M13.6 5l-3.2 14" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24"><rect x="4.5" y="10" width="15" height="10.5" rx="3" stroke="currentColor" stroke-width="1.7"/><path d="M8 10V7.5a4 4 0 0 1 8 0V10" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><circle cx="12" cy="15.2" r="1.5" fill="currentColor"/></symbol>
+    <symbol id="i-rocket" viewBox="0 0 24 24"><path d="M14.5 4.5c2.6-2 5-1.6 5-1.6s.4 2.4-1.6 5c-1.6 2.1-4.4 4.2-6.2 5.4l-2.9-2.9c1.2-1.8 3.3-4.6 5.7-6.3Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="m9 10.6-3.6.9L3 14l4 .5m2.7 2.7.9 3.6 2.5-2.4.5-4M6.5 17.5 4 20" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6" stroke="currentColor" stroke-width="1.7"/><path d="m16 16 4 4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h13m0 0-5.5-5.5M18 12l-5.5 5.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 4v10m0 0 4-4m-4 4-4-4M5 18h14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-windows" viewBox="0 0 24 24"><path d="M4 6.5 11 5.4v6.1H4V6.5Zm0 11L11 18.6v-6.1H4v5Zm8 1.3 8 1.2V12.5h-8v6.3Zm0-13.4v6.3h8V3.5l-8 1.5Z" fill="currentColor"/></symbol>
+    <symbol id="i-apple" viewBox="0 0 24 24"><path d="M15.6 12.6c0-2.3 1.9-3.4 2-3.5-1.1-1.6-2.7-1.8-3.3-1.9-1.4-.1-2.6.8-3.3.8-.7 0-1.7-.8-2.9-.8-1.5 0-2.9.9-3.7 2.3-1.6 2.7-.4 6.8 1.1 9 .7 1.1 1.6 2.3 2.8 2.3 1.1 0 1.5-.7 2.9-.7 1.3 0 1.7.7 2.9.7 1.2 0 2-1.1 2.8-2.2.9-1.3 1.3-2.6 1.3-2.7-.1 0-2.6-1-2.6-3.3ZM13.4 5.7c.6-.8 1-1.9.9-3-1 0-2.1.7-2.8 1.5-.6.7-1.1 1.8-1 2.8 1.1.1 2.2-.5 2.9-1.3Z" fill="currentColor"/></symbol>
+    <symbol id="i-linux" viewBox="0 0 24 24"><path d="M9.2 8.4c0-2.1.7-4 2.8-4s2.8 1.9 2.8 4M9.2 8.4c-.4 2.3-1.7 4.3-2.6 6.2-.6 1.3.2 2.4 1.6 2.8 1 .3 2.3.4 3.8.4s2.8-.1 3.8-.4c1.4-.4 2.2-1.5 1.6-2.8-.9-1.9-2.2-3.9-2.6-6.2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="10.2" cy="7.6" r=".9" fill="currentColor"/><circle cx="13.8" cy="7.6" r=".9" fill="currentColor"/></symbol>
+    <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m6 9.5 6 6 6-6" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24"><path d="m12 3.6 2.6 5.3 5.9.8-4.3 4.2 1 5.9-5.2-2.8-5.2 2.8 1-5.9L3.5 9.7l5.9-.8L12 3.6Z" fill="currentColor"/></symbol>
+    <symbol id="i-copy" viewBox="0 0 24 24"><rect x="9" y="9" width="11" height="11" rx="2.5" stroke="currentColor" stroke-width="1.7"/><path d="M15 6.5V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></symbol>
+    <symbol id="i-discord" viewBox="0 0 24 24"><path d="M8.6 6.2A14 14 0 0 0 5 7.6C2.9 10.8 2.5 14 2.7 17.1a14 14 0 0 0 4.2 2.1l1-1.6a9 9 0 0 1-1.6-.8l.4-.3a11.6 11.6 0 0 0 10.6 0l.4.3c-.5.3-1 .6-1.6.8l1 1.6a14 14 0 0 0 4.2-2.1c.3-3.6-.5-6.8-2.3-9.5a13.6 13.6 0 0 0-3.6-1.4l-.7 1.4a11 11 0 0 1-3.4-.5 11 11 0 0 1-3.4.5l-.7-1.4Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><circle cx="9.2" cy="13" r="1.4" fill="currentColor"/><circle cx="14.8" cy="13" r="1.4" fill="currentColor"/></symbol>
+    <symbol id="i-telegram" viewBox="0 0 24 24"><path d="M20.6 4.3 3.9 10.6c-1 .4-1 1 .1 1.4l4 1.2 1.5 4.7c.2.6.4.8 1 .8.4 0 .6-.2.9-.5l2-2 4.1 3c.8.4 1.3.2 1.5-.7l2.7-12.7c.2-1.1-.4-1.6-1.1-1.5ZM9.4 14.4l8.1-5.1c.4-.2.7 0 .4.3l-6.7 6-.3 2.8-1.5-4Z" fill="currentColor"/></symbol>
+    <symbol id="i-youtube" viewBox="0 0 24 24"><rect x="2.5" y="6" width="19" height="12" rx="3.5" stroke="currentColor" stroke-width="1.6"/><path d="m10.4 9.6 4.6 2.4-4.6 2.4V9.6Z" fill="currentColor"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.8"/><path d="M12 3v2m0 14v2M3 12h2m14 0h2M5.6 5.6 7 7m10 10 1.4 1.4M18.4 5.6 17 7M7 17l-1.4 1.4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 14.2A8.2 8.2 0 0 1 9.8 4a8.5 8.5 0 1 0 10.2 10.2Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
+    <symbol id="i-cpu" viewBox="0 0 24 24"><rect x="6.5" y="6.5" width="11" height="11" rx="2.5" stroke="currentColor" stroke-width="1.7"/><rect x="10" y="10" width="4" height="4" rx="1" fill="currentColor"/><path d="M10 3v3m4-3v3m-4 12v3m4-3v3M3 10h3m-3 4h3m12-4h3m-3 4h3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></symbol>
+    <symbol id="i-gauge" viewBox="0 0 24 24"><path d="M4 17a8.5 8.5 0 1 1 16 0" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="m12 17 4.2-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="12" cy="17" r="1.6" fill="currentColor"/></symbol>
+    <symbol id="i-layers" viewBox="0 0 24 24"><path d="m12 3 8.5 4.5L12 12 3.5 7.5 12 3Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="m4 12.5 8 4.3 8-4.3M4 16.8l8 4.2 8-4.2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-sparkles" viewBox="0 0 24 24"><path d="m12 3 1.8 4.9L18.7 9.7 13.8 11.5 12 16.4l-1.8-4.9L5.3 9.7l4.9-1.8L12 3Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M18.5 15.5l.8 2.2 2.2.8-2.2.8-.8 2.2-.8-2.2-2.2-.8 2.2-.8.8-2.2Z" fill="currentColor"/></symbol>
+    <symbol id="i-keyboard" viewBox="0 0 24 24"><rect x="2.5" y="6.5" width="19" height="11" rx="2.5" stroke="currentColor" stroke-width="1.6"/><path d="M6 10h1.5M10 10h1.5M14 10h1.5M18 10h.01M6 13.5h1.5M18 13.5h.01M10.5 14h3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></symbol>
+    <symbol id="i-server" viewBox="0 0 24 24"><rect x="3.5" y="4.5" width="17" height="6" rx="2" stroke="currentColor" stroke-width="1.6"/><rect x="3.5" y="13.5" width="17" height="6" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M7 7.5h.01M7 16.5h.01M11 7.5h4M11 16.5h4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+    <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8.5" r="3.5" stroke="currentColor" stroke-width="1.7"/><path d="M2.8 20c.6-3.2 3.1-5.2 6.2-5.2s5.6 2 6.2 5.2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path d="M16 5.4a3.5 3.5 0 0 1 0 6.7M17.6 15c2.1.5 3.4 2.2 3.7 4.4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></symbol>
+    <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M20 5.5v5h-5M4 18.5v-5h5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M19.4 10.5A7.5 7.5 0 0 0 6.3 7.2M4.6 13.5a7.5 7.5 0 0 0 13.1 3.3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><path d="m9 6.5 8.5 5.5L9 17.5v-11Z" fill="currentColor"/></symbol>
+    <symbol id="i-cursor" viewBox="0 0 24 24"><path d="M5.5 3.8 19 11.2l-5.8 1.4-2.4 5.6L5.5 3.8Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></symbol>
+    <symbol id="i-cart" viewBox="0 0 24 24"><path d="M3 4h2.2l2.3 10.4h9.9L19.5 7H6.2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9" cy="19" r="1.6" fill="currentColor"/><circle cx="17" cy="19" r="1.6" fill="currentColor"/></symbol>
+    <symbol id="i-arrow-up" viewBox="0 0 24 24"><path d="M12 19V5m0 0-6 6m6-6 6 6" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  </defs>
+</svg>
+
+<div class="scroll-progress" aria-hidden="true"><span id="scrollBar"></span></div>
+
+<!-- ============ TOP APP BAR ============ -->
+<header class="appbar" id="appbar">
+  <div class="appbar__inner container">
+    <a class="brand" href="#home" aria-label="Enuda Client — на главную">
+      <span class="brand__mark">
+        <svg viewBox="0 0 32 32" aria-hidden="true">
+          <path d="M16 2 28.1 9v14L16 30 3.9 23V9L16 2Z" fill="none" stroke="currentColor" stroke-width="2"/>
+          <path d="M11 11.5h10M11 16h7.5M11 20.5h10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </span>
+      <span class="brand__text">ENUDA<span>client</span></span>
+    </a>
+
+    <nav class="nav" aria-label="Основная навигация">
+      <a class="nav__link" href="#bypass">Обходы</a>
+      <a class="nav__link" href="#performance">FPS</a>
+      <a class="nav__link" href="#modules">Модули</a>
+      <a class="nav__link" href="#gui">ClickGUI</a>
+      <a class="nav__link" href="#pricing">Тарифы</a>
+      <a class="nav__link" href="#faq">FAQ</a>
+    </nav>
+
+    <div class="appbar__actions">
+      <button class="icon-btn ripple" id="themeToggle" type="button" aria-label="Переключить тему" title="Переключить тему">
+        <svg class="i-sun"><use href="#i-sun"></use></svg>
+        <svg class="i-moon"><use href="#i-moon"></use></svg>
+      </button>
+      <a class="btn btn--filled btn--sm ripple desktop-only" href="#pricing">
+        <svg><use href="#i-cart"></use></svg>
+        Купить
+      </a>
+      <button class="icon-btn ripple mobile-only" id="menuToggle" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="navDrawer">
+        <svg><use href="#i-menu"></use></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ============ MOBILE DRAWER ============ -->
+<div class="drawer" id="navDrawer" role="dialog" aria-modal="true" aria-label="Меню" aria-hidden="true">
+  <div class="drawer__head">
+    <span class="brand__text">ENUDA<span>client</span></span>
+    <button class="icon-btn ripple" id="menuClose" type="button" aria-label="Закрыть меню"><svg><use href="#i-close"></use></svg></button>
+  </div>
+  <nav class="drawer__nav" aria-label="Мобильная навигация">
+    <a href="#bypass"><svg><use href="#i-shield"></use></svg>Обходы<svg class="chev"><use href="#i-arrow"></use></svg></a>
+    <a href="#performance"><svg><use href="#i-gauge"></use></svg>Производительность<svg class="chev"><use href="#i-arrow"></use></svg></a>
+    <a href="#modules"><svg><use href="#i-tune"></use></svg>Модули<svg class="chev"><use href="#i-arrow"></use></svg></a>
+    <a href="#gui"><svg><use href="#i-palette"></use></svg>ClickGUI<svg class="chev"><use href="#i-arrow"></use></svg></a>
+    <a href="#pricing"><svg><use href="#i-cart"></use></svg>Тарифы<svg class="chev"><use href="#i-arrow"></use></svg></a>
+    <a href="#faq"><svg><use href="#i-sparkles"></use></svg>FAQ<svg class="chev"><use href="#i-arrow"></use></svg></a>
+  </nav>
+  <div class="drawer__foot">
+    <a class="btn btn--filled btn--full ripple" href="#pricing">Купить ключ</a>
+    <p class="drawer__meta">Fabric 1.21.11 · Windows 10/11</p>
+  </div>
+</div>
+<div class="drawer-scrim" id="drawerScrim" hidden></div>
+
+<main id="home">
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="hero">
+  <div class="hero__bg" aria-hidden="true">
+    <img src="assets/img/hero-bg.jpg" alt="" fetchpriority="high" width="1376" height="768">
+    <span class="hero__glow" id="heroGlow"></span>
+  </div>
+
+  <div class="container hero__inner">
+    <div class="hero__copy">
+      <div class="hero__badges reveal">
+        <span class="chip chip--accent">
+          <span class="dot dot--live"></span> Fabric 1.21.11
+        </span>
+        <span class="chip chip--ghost">
+          <svg><use href="#i-refresh"></use></svg> Обновление 4.2 — 7 ноября
+        </span>
+      </div>
+
+      <h1 class="hero__title reveal" data-delay="1">
+        Обходы, которые работают.<br>
+        <span class="grad-text">FPS, который решает.</span>
+      </h1>
+
+      <p class="hero__sub reveal" data-delay="2">
+        Enuda — клиент для <strong>Minecraft Fabric 1.21.11</strong> с индивидуальными обходами
+        GrimAC, Matrix, Vulcan и NCP. Переписанный рендер, умный менеджер памяти и ClickGUI
+        в стиле Material&nbsp;3.
+      </p>
+
+      <div class="hero__cta reveal" data-delay="3">
+        <button class="btn btn--filled btn--lg ripple" type="button" data-open-download>
+          <svg><use href="#i-download"></use></svg>
+          Скачать лаунчер
+        </button>
+        <a class="btn btn--outlined btn--lg ripple" href="#modules">
+          Смотреть модули
+          <svg><use href="#i-arrow"></use></svg>
+        </a>
+      </div>
+
+      <dl class="hero__stats reveal" data-delay="4">
+        <div class="stat">
+          <dt>Игроков</dt>
+          <dd><span class="stat__num" data-count="24180">0</span><span class="plus">+</span></dd>
+        </div>
+        <div class="stat">
+          <dt>Средний прирост FPS</dt>
+          <dd><span class="plus">+</span><span class="stat__num" data-count="164">0</span><span class="plus">%</span></dd>
+        </div>
+        <div class="stat">
+          <dt>Модулей</dt>
+          <dd><span class="stat__num" data-count="184">0</span></dd>
+        </div>
+        <div class="stat">
+          <dt>Аптайм</dt>
+          <dd><span class="stat__num" data-count="99" data-suffix=".9">0</span><span class="plus">%</span></dd>
+        </div>
+      </dl>
+    </div>
+
+    <!-- ---- ClickGUI mock ---- -->
+    <div class="hero__gui reveal" data-delay="3">
+      <div class="gui" aria-hidden="true">
+        <div class="gui__bar">
+          <span class="gui__dots"><i></i><i></i><i></i></span>
+          <span class="gui__name">enuda<span>• clickgui</span></span>
+          <span class="gui__search"><svg><use href="#i-search"></use></svg>Поиск</span>
+          <span class="gui__badge">RShift</span>
+        </div>
+        <div class="gui__body">
+          <ul class="gui__rail">
+            <li class="is-active"><svg><use href="#i-cursor"></use></svg>Бой</li>
+            <li><svg><use href="#i-rocket"></use></svg>Движение</li>
+            <li><svg><use href="#i-layers"></use></svg>Рендер</li>
+            <li><svg><use href="#i-server"></use></svg>Мир</li>
+            <li><svg><use href="#i-shield"></use></svg>Игрок</li>
+          </ul>
+          <div class="gui__pane">
+            <div class="gui__pane-head">
+              <span>Бой</span>
+              <span class="gui__count">12 модулей</span>
+            </div>
+
+            <div class="mod-row is-on">
+              <span class="mod-row__name">Aura <b>R</b></span>
+              <span class="sw sw--on"></span>
+            </div>
+            <div class="mod-row is-on">
+              <span class="mod-row__name">Velocity <b>V</b></span>
+              <span class="sw sw--on"></span>
+            </div>
+            <div class="mod-row">
+              <span class="mod-row__name">Criticals <b>C</b></span>
+              <span class="sw"></span>
+            </div>
+            <div class="mod-row is-on">
+              <span class="mod-row__name">AutoTotem <b>T</b></span>
+              <span class="sw sw--on"></span>
+            </div>
+            <div class="mod-row">
+              <span class="mod-row__name">TriggerBot <b>G</b></span>
+              <span class="sw"></span>
+            </div>
+
+            <div class="gui__settings">
+              <div class="gui__setting">
+                <label>Радиус атаки</label><span>3.1</span>
+                <div class="bar"><i style="--v:62%"></i></div>
+              </div>
+              <div class="gui__setting">
+                <label>Скорость ротации</label><span>78%</span>
+                <div class="bar"><i style="--v:78%"></i></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="gui__foot">
+          <span class="gui__fps"><svg><use href="#i-gauge"></use></svg> <b id="mockFps">312</b> FPS</span>
+          <span class="gui__spark">
+            <svg viewBox="0 0 120 26" preserveAspectRatio="none">
+              <polyline points="0,20 10,17 20,18 30,12 40,14 50,8 60,11 70,6 80,9 90,4 100,7 110,3 120,5"/>
+            </svg>
+          </span>
+          <span class="gui__ping">16 ms</span>
+        </div>
+      </div>
+
+      <div class="gui-float gui-float--a">
+        <span class="dot dot--live"></span>
+        <div><b>GrimAC 2.3</b><small>обход активен</small></div>
+      </div>
+      <div class="gui-float gui-float--b">
+        <svg><use href="#i-bolt"></use></svg>
+        <div><b>+164%</b><small>средний FPS</small></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero__marquee" aria-hidden="true">
+    <div class="marquee">
+      <div class="marquee__track">
+        <span>GrimAC</span><i>◆</i><span>Matrix</span><i>◆</i><span>Vulcan</span><i>◆</i><span>NCP</span><i>◆</i><span>Intave</span><i>◆</i>
+        <span>FunTime</span><i>◆</i><span>HolyWorld</span><i>◆</i><span>ReallyWorld</span><i>◆</i><span>SpookyTime</span><i>◆</i><span>MineBlaze</span><i>◆</i>
+        <span>GrimAC</span><i>◆</i><span>Matrix</span><i>◆</i><span>Vulcan</span><i>◆</i><span>NCP</span><i>◆</i><span>Intave</span><i>◆</i>
+        <span>FunTime</span><i>◆</i><span>HolyWorld</span><i>◆</i><span>ReallyWorld</span><i>◆</i><span>SpookyTime</span><i>◆</i><span>MineBlaze</span><i>◆</i>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BYPASS ============ -->
+<section class="section" id="bypass">
+  <div class="container">
+    <div class="section__head reveal">
+      <span class="eyebrow"><svg><use href="#i-shield"></use></svg> Обходы античитов</span>
+      <h2>Тишина там, где раньше был бан</h2>
+      <p>Мы не льём «список серверов» в маркетинг. Каждый обход тестируется на живых серверах,
+        логи разбираются вручную, а патчи выходят в течение 24–72 часов после обновления античита.</p>
+    </div>
+
+    <div class="bypass-grid">
+      <div class="panel reveal">
+        <div class="panel__head">
+          <h3>Матрица обходов</h3>
+          <span class="chip chip--ghost"><span class="dot dot--live"></span> проверено сегодня</span>
+        </div>
+        <ul class="matrix" id="matrixList">
+          <li class="matrix__row">
+            <span class="matrix__name"><b>GrimAC</b><small>2.3 · FunTime, HolyWorld</small></span>
+            <span class="status status--ok">Работает</span>
+            <span class="matrix__ver">v4.2.1</span>
+          </li>
+          <li class="matrix__row">
+            <span class="matrix__name"><b>Matrix</b><small>6.7 · ReallyWorld</small></span>
+            <span class="status status--ok">Работает</span>
+            <span class="matrix__ver">v4.2.1</span>
+          </li>
+          <li class="matrix__row">
+            <span class="matrix__name"><b>Vulcan</b><small>2.9 · SpookyTime</small></span>
+            <span class="status status--ok">Работает</span>
+            <span class="matrix__ver">v4.2.0</span>
+          </li>
+          <li class="matrix__row">
+            <span class="matrix__name"><b>NoCheatPlus</b><small>legacy · MineBlaze</small></span>
+            <span class="status status--ok">Работает</span>
+            <span class="matrix__ver">v4.1.8</span>
+          </li>
+          <li class="matrix__row">
+            <span class="matrix__name"><b>Intave</b><small>14.x · тест-группа</small></span>
+            <span class="status status--warn">Тестируется</span>
+            <span class="matrix__ver">beta</span>
+          </li>
+          <li class="matrix__row">
+            <span class="matrix__name"><b>Verus</b><small>внутренний стенд</small></span>
+            <span class="status status--wait">В работе</span>
+            <span class="matrix__ver">—</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="bypass-side">
+        <div class="card card--filled reveal" data-delay="1">
+          <div class="card__icon"><svg><use href="#i-tune"></use></svg></div>
+          <h3>Ротации под античит</h3>
+          <p>Профили движения и углов подбираются под конкретную защиту. Никаких «телепорт-аур» —
+            только предсказуемое для сервера поведение.</p>
+        </div>
+        <div class="card card--filled reveal" data-delay="2">
+          <div class="card__icon"><svg><use href="#i-refresh"></use></svg></div>
+          <h3>Патчи за 24–72 часа</h3>
+          <p>Античит обновился — мы уже смотрим логи. Лаунчер обновит клиент в фоне,
+            без переустановки и повторного ввода ключа.</p>
+        </div>
+        <div class="card card--filled reveal" data-delay="3">
+          <div class="card__icon"><svg><use href="#i-lock"></use></svg></div>
+          <h3>Приватные методы</h3>
+          <p>Часть обходов не выкладывается в публичные сборки: они живут на сервере и
+            подгружаются только вашей HWID-лицензии.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="servers reveal">
+      <span class="servers__label">Проверено на серверах</span>
+      <div class="servers__list">
+        <span class="server-chip">FunTime</span>
+        <span class="server-chip">HolyWorld</span>
+        <span class="server-chip">ReallyWorld</span>
+        <span class="server-chip">SpookyTime</span>
+        <span class="server-chip">MineBlaze</span>
+        <span class="server-chip">Sunrise</span>
+        <span class="server-chip">HypeMC</span>
+        <span class="server-chip">Mustery</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PERFORMANCE ============ -->
+<section class="section section--contrast" id="performance">
+  <div class="container">
+    <div class="section__head reveal">
+      <span class="eyebrow"><svg><use href="#i-gauge"></use></svg> Производительность</span>
+      <h2>Плавность там, где раньше были фризы</h2>
+      <p>Мы переписали путь отрисовки: батчинг вызовов, асинхронная сборка чанков,
+        кэш моделей и собственный менеджер памяти. Ниже — реальные замеры на стенде
+        Ryzen 5 5600 / GTX 1650 / 16 ГБ.</p>
+    </div>
+
+    <div class="bench reveal">
+      <div class="bench__head">
+        <div class="segmented" id="fpsScenarios" role="tablist" aria-label="Сценарий замера">
+          <button class="segmented__item is-active ripple" role="tab" aria-selected="true" data-scenario="spawn">Спавн</button>
+          <button class="segmented__item ripple" role="tab" aria-selected="false" data-scenario="fight">Замес 20 игроков</button>
+          <button class="segmented__item ripple" role="tab" aria-selected="false" data-scenario="chunks">Загрузка чанков</button>
+          <button class="segmented__item ripple" role="tab" aria-selected="false" data-scenario="shaders">Шейдеры</button>
+        </div>
+        <div class="bench__hint" id="fpsHint">Рендер-дистанция 12 чанков · 1080p</div>
+      </div>
+
+      <div class="bench__body">
+        <div class="bench__chart" id="fpsChart">
+          <div class="bench__row">
+            <span class="bench__legend"><i class="dot dot--muted"></i> Ванильный Fabric</span>
+            <div class="bench__track"><span class="bench__bar bench__bar--vanilla" id="barVanilla" style="--w:32%"></span></div>
+            <span class="bench__value" id="fpsVanilla">96</span>
+          </div>
+          <div class="bench__row">
+            <span class="bench__legend"><i class="dot dot--live"></i> Enuda Client</span>
+            <div class="bench__track"><span class="bench__bar bench__bar--enuda" id="barEnuda" style="--w:84%"></span></div>
+            <span class="bench__value" id="fpsEnuda">254</span>
+          </div>
+          <div class="bench__delta">
+            <span class="bench__delta-num" id="fpsDelta">+164%</span>
+            <span class="bench__delta-label">средний прирост кадров</span>
+          </div>
+        </div>
+
+        <div class="presets">
+          <div class="presets__title">Пресет рендера</div>
+          <div class="segmented segmented--stack" id="presetSeg" role="tablist" aria-label="Пресет рендера">
+            <button class="segmented__item is-active ripple" role="tab" aria-selected="true" data-preset="max">Максимум FPS</button>
+            <button class="segmented__item ripple" role="tab" aria-selected="false" data-preset="balanced">Баланс</button>
+            <button class="segmented__item ripple" role="tab" aria-selected="false" data-preset="quality">Качество</button>
+          </div>
+          <ul class="presets__list" id="presetList">
+            <li><span>Частицы</span><b>Минимум</b></li>
+            <li><span>Тени сущностей</span><b>Выкл</b></li>
+            <li><span>Дистанция прорисовки</span><b>8 чанков</b></li>
+            <li><span>Оптимизация HUD</span><b>Вкл</b></li>
+          </ul>
+          <div class="presets__est">
+            <span>Ожидаемый FPS</span>
+            <strong id="presetFps">312</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="perf-grid">
+      <article class="card card--outlined reveal">
+        <div class="card__icon"><svg><use href="#i-cpu"></use></svg></div>
+        <h3>Умный менеджер памяти</h3>
+        <p>Переиспользование буферов и контроль GC-пауз: просадки на сборке мусора больше не режут кадр.</p>
+        <span class="card__tag">до −87% GC-фризов</span>
+      </article>
+      <article class="card card--outlined reveal" data-delay="1">
+        <div class="card__icon"><svg><use href="#i-layers"></use></svg></div>
+        <h3>Батчинг вызовов</h3>
+        <p>Отрисовка объединяется в пакеты, а модели и текстуры кэшируются между кадрами.</p>
+        <span class="card__tag">−41% draw calls</span>
+      </article>
+      <article class="card card--outlined reveal" data-delay="2">
+        <div class="card__icon"><svg><use href="#i-bolt"></use></svg></div>
+        <h3>Асинхронные чанки</h3>
+        <p>Сборка и загрузка мешей идут в отдельных потоках — вход в мир без «заморозки» на 3 секунды.</p>
+        <span class="card__tag">−72% времени загрузки</span>
+      </article>
+      <article class="card card--outlined reveal" data-delay="3">
+        <div class="card__icon"><svg><use href="#i-sparkles"></use></svg></div>
+        <h3>Чистый рендер</h3>
+        <p>Отключаются невидимые частицы, лишние хитбоксы и эффекты, которые вы не видите, но железо считает.</p>
+        <span class="card__tag">+38 FPS в замесе</span>
+      </article>
+    </div>
+
+    <div class="compat reveal">
+      <span class="compat__label">Совместимость без конфликтов</span>
+      <div class="compat__list">
+        <span class="chip chip--ghost">Sodium</span>
+        <span class="chip chip--ghost">Iris Shaders</span>
+        <span class="chip chip--ghost">Lithium</span>
+        <span class="chip chip--ghost">Fabric API</span>
+        <span class="chip chip--ghost">Mod Menu</span>
+        <span class="chip chip--ghost">Xaero's Map</span>
+        <span class="chip chip--ghost">ViaFabric</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MODULES ============ -->
+<section class="section" id="modules">
+  <div class="container">
+    <div class="section__head reveal">
+      <span class="eyebrow"><svg><use href="#i-tune"></use></svg> Модули</span>
+      <h2>184 модуля. Ни одного «для галочки»</h2>
+      <p>Поиск по клиенту, бинды, профили и настройки на лету. Нажмите на переключатель —
+        так это работает в игре.</p>
+    </div>
+
+    <div class="modules__toolbar reveal">
+      <div class="chipset" id="moduleFilters">
+        <button class="chip chip--filter is-active ripple" data-cat="all">Все <span>24</span></button>
+        <button class="chip chip--filter ripple" data-cat="combat">Бой</button>
+        <button class="chip chip--filter ripple" data-cat="move">Движение</button>
+        <button class="chip chip--filter ripple" data-cat="render">Рендер</button>
+        <button class="chip chip--filter ripple" data-cat="world">Мир</button>
+        <button class="chip chip--filter ripple" data-cat="player">Игрок</button>
+      </div>
+      <label class="search" for="moduleSearch">
+        <svg><use href="#i-search"></use></svg>
+        <input id="moduleSearch" type="search" placeholder="Найти модуль: aura, esp, scaffold…" autocomplete="off">
+      </label>
+    </div>
+
+    <div class="modules__grid" id="modulesGrid" aria-live="polite"></div>
+    <p class="modules__empty" id="modulesEmpty" hidden>Ничего не найдено. Попробуйте «aura», «esp» или «speed».</p>
+    <p class="modules__count" id="moduleCount">Показано 24 из 24 · 184 модуля в полной сборке</p>
+  </div>
+</section>
+
+<!-- ============ GUI ============ -->
+<section class="section section--contrast" id="gui">
+  <div class="container gui-section">
+    <div class="gui-section__copy reveal">
+      <span class="eyebrow"><svg><use href="#i-palette"></use></svg> ClickGUI</span>
+      <h2>Интерфейс, который не хочется закрывать</h2>
+      <p>Material&nbsp;3 в Minecraft: тональные поверхности, state-слои, ripple-анимации и
+        собственный рендер-движок поверх игры. Темы, отступы и раскладку можно менять без
+        перезахода в мир.</p>
+      <ul class="checks">
+        <li><svg><use href="#i-check"></use></svg> 6 акцентных тем и авто-подхват системной</li>
+        <li><svg><use href="#i-check"></use></svg> Поиск, бинды и закреплённые модули</li>
+        <li><svg><use href="#i-check"></use></svg> HUD-редактор с сеткой и привязкой к краям</li>
+        <li><svg><use href="#i-check"></use></svg> Плавные 240 FPS в меню — без влияния на игру</li>
+      </ul>
+      <div class="gui-section__cta">
+        <button class="btn btn--tonal ripple" type="button" data-open-download>
+          <svg><use href="#i-play"></use></svg> Попробовать демо
+        </button>
+        <a class="btn btn--text ripple" href="#pricing">Смотреть тарифы <svg><use href="#i-arrow"></use></svg></a>
+      </div>
+    </div>
+
+    <div class="demo reveal" data-delay="1">
+      <div class="demo__window">
+        <div class="demo__bar">
+          <span class="gui__dots"><i></i><i></i><i></i></span>
+          <span class="demo__title">enuda · clickgui <em>интерактивно</em></span>
+          <button class="demo__theme icon-btn ripple" type="button" id="demoTheme" aria-label="Сменить акцентную тему">
+            <svg><use href="#i-palette"></use></svg>
+          </button>
+        </div>
+        <div class="demo__body">
+          <ul class="demo__rail" id="demoRail" role="tablist" aria-label="Категории модулей"></ul>
+          <div class="demo__pane">
+            <div class="demo__pane-head">
+              <span id="demoCatTitle">Бой</span>
+              <span class="gui__count" id="demoCatCount">8 модулей</span>
+            </div>
+            <div class="demo__list" id="demoList"></div>
+            <div class="demo__settings" id="demoSettings"></div>
+          </div>
+        </div>
+        <div class="demo__foot">
+          <span class="demo__foot-item"><svg><use href="#i-keyboard"></use></svg> RShift — открыть меню</span>
+          <span class="demo__foot-item"><svg><use href="#i-cloud"></use></svg> конфиг сохранён</span>
+          <span class="demo__foot-live"><span class="dot dot--live"></span> <b>312</b> FPS</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FEATURES / CLOUD ============ -->
+<section class="section" id="features">
+  <div class="container">
+    <div class="section__head reveal">
+      <span class="eyebrow"><svg><use href="#i-sparkles"></use></svg> Экосистема</span>
+      <h2>Больше, чем набор модулей</h2>
+      <p>Лаунчер, облако конфигов, скрипты и защита лицензии — всё в одном месте.</p>
+    </div>
+
+    <div class="bento">
+      <article class="bento__item bento__item--lg reveal">
+        <div class="bento__media">
+          <img src="assets/img/world.jpg" alt="Воксельный остров в тёмном неоне" loading="lazy" width="1408" height="768">
+        </div>
+        <div class="bento__text">
+          <span class="chip chip--accent">Cloud</span>
+          <h3>Облачные конфиги</h3>
+          <p>Сохраняйте профили, переключайте их между аккаунтами и делитесь пресетами ссылкой.
+            Загрузка занимает меньше секунды.</p>
+          <div class="bento__mock">
+            <span class="cfg-chip is-active">FunTime · Grim</span>
+            <span class="cfg-chip">HolyWorld · Vulcan</span>
+            <span class="cfg-chip">Legit PvP</span>
+            <span class="cfg-chip">+ 12</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="bento__item reveal" data-delay="1">
+        <div class="card__icon"><svg><use href="#i-code"></use></svg></div>
+        <h3>Скрипты на JS</h3>
+        <p>Свой API: события мира, HUD, команды и настройки. Пишите модули без пересборки клиента.</p>
+        <pre class="code"><code><span class="c-key">const</span> aura = client.module(<span class="c-str">'Aura'</span>);
+client.on(<span class="c-str">'tick'</span>, () =&gt; {
+  <span class="c-key">if</span> (aura.enabled) aura.rotate();
+});</code></pre>
+      </article>
+
+      <article class="bento__item reveal" data-delay="2">
+        <div class="card__icon"><svg><use href="#i-lock"></use></svg></div>
+        <h3>HWID-защита</h3>
+        <p>Ключ привязан к устройству, лаунчер обновляется по шифрованному каналу.
+           Бесплатный сброс HWID раз в 30 дней.</p>
+        <ul class="mini-list">
+          <li><svg><use href="#i-check"></use></svg> Авторизация без ввода пароля от аккаунта</li>
+          <li><svg><use href="#i-check"></use></svg> Лоадер без фоновых процессов</li>
+          <li><svg><use href="#i-check"></use></svg> Ключ не передаётся третьим лицам</li>
+        </ul>
+      </article>
+
+      <article class="bento__item reveal" data-delay="3">
+        <div class="card__icon"><svg><use href="#i-rocket"></use></svg></div>
+        <h3>Лаунчер 1 клик</h3>
+        <p>Fabric, Java, моды и клиент — ставится сам. Обновления подтягиваются в фоне,
+           аккаунты Microsoft и Ely.by поддерживаются.</p>
+        <div class="launcher">
+          <div class="launcher__row"><span>Fabric Loader</span><b>0.16.9</b><svg><use href="#i-check"></use></svg></div>
+          <div class="launcher__row"><span>Minecraft</span><b>1.21.11</b><svg><use href="#i-check"></use></svg></div>
+          <div class="launcher__row"><span>Java 21</span><b>установлена</b><svg><use href="#i-check"></use></svg></div>
+          <div class="launcher__bar"><i></i></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRICING ============ -->
+<section class="section" id="pricing">
+  <div class="container">
+    <div class="section__head reveal">
+      <span class="eyebrow"><svg><use href="#i-cart"></use></svg> Тарифы</span>
+      <h2>Один клиент. Все функции.</h2>
+      <p>Без автопродлений и скрытых платежей. Ключ приходит на почту сразу после оплаты.</p>
+    </div>
+
+    <div class="pricing__toggle reveal">
+      <div class="segmented" id="durationSeg" role="tablist" aria-label="Срок подписки">
+        <button class="segmented__item is-active ripple" role="tab" aria-selected="true" data-term="30">30 дней</button>
+        <button class="segmented__item ripple" role="tab" aria-selected="false" data-term="90">90 дней <span class="seg-save">−25%</span></button>
+        <button class="segmented__item ripple" role="tab" aria-selected="false" data-term="forever">Навсегда</button>
+      </div>
+    </div>
+
+    <div class="plans">
+      <article class="plan reveal">
+        <header class="plan__head">
+          <h3>Enuda Lite</h3>
+          <p>Для тех, кто хочет плавность и базовые модули.</p>
+        </header>
+        <div class="plan__price">
+          <span class="plan__amount" data-price="lite">149</span><span class="plan__cur">₽</span>
+          <span class="plan__per" data-per>за 30 дней</span>
+        </div>
+        <ul class="plan__feats">
+          <li><svg><use href="#i-check"></use></svg> 90 базовых модулей</li>
+          <li><svg><use href="#i-check"></use></svg> Оптимизация FPS</li>
+          <li><svg><use href="#i-check"></use></svg> ClickGUI и 2 темы</li>
+          <li><svg><use href="#i-check"></use></svg> Локальные конфиги</li>
+          <li class="is-muted"><svg><use href="#i-close"></use></svg> Обходы античитов</li>
+          <li class="is-muted"><svg><use href="#i-close"></use></svg> Облачные конфиги</li>
+        </ul>
+        <button class="btn btn--outlined btn--full ripple" data-plan="Lite">Выбрать Lite</button>
+      </article>
+
+      <article class="plan plan--featured reveal" data-delay="1">
+        <span class="plan__badge">Выбор игроков</span>
+        <header class="plan__head">
+          <h3>Enuda Pro</h3>
+          <p>Обходы, все модули и облако. Оптимальный вариант.</p>
+        </header>
+        <div class="plan__price">
+          <span class="plan__amount" data-price="pro">249</span><span class="plan__cur">₽</span>
+          <span class="plan__per" data-per>за 30 дней</span>
+        </div>
+        <ul class="plan__feats">
+          <li><svg><use href="#i-check"></use></svg> Все 184 модуля</li>
+          <li><svg><use href="#i-check"></use></svg> Обходы GrimAC, Matrix, Vulcan, NCP</li>
+          <li><svg><use href="#i-check"></use></svg> Облачные конфиги и пресеты</li>
+          <li><svg><use href="#i-check"></use></svg> Все темы и HUD-редактор</li>
+          <li><svg><use href="#i-check"></use></svg> Ранний доступ к бете</li>
+          <li><svg><use href="#i-check"></use></svg> Поддержка в Discord</li>
+        </ul>
+        <button class="btn btn--filled btn--full ripple" data-plan="Pro">Купить Pro</button>
+      </article>
+
+      <article class="plan reveal" data-delay="2">
+        <header class="plan__head">
+          <h3>Enuda Max</h3>
+          <p>Приватные методы и максимальный приоритет.</p>
+        </header>
+        <div class="plan__price">
+          <span class="plan__amount" data-price="max">399</span><span class="plan__cur">₽</span>
+          <span class="plan__per" data-per>за 30 дней</span>
+        </div>
+        <ul class="plan__feats">
+          <li><svg><use href="#i-check"></use></svg> Всё из Pro</li>
+          <li><svg><use href="#i-check"></use></svg> Приватные обходы (не в публичной сборке)</li>
+          <li><svg><use href="#i-check"></use></svg> Личные патчи под ваш сервер</li>
+          <li><svg><use href="#i-check"></use></svg> Приоритетная поддержка 24/7</li>
+          <li><svg><use href="#i-check"></use></svg> Бета-сборки в день релиза</li>
+          <li><svg><use href="#i-check"></use></svg> Бесплатный сброс HWID</li>
+        </ul>
+        <button class="btn btn--tonal btn--full ripple" data-plan="Max">Выбрать Max</button>
+      </article>
+    </div>
+
+    <div class="pricing__note reveal">
+      <div class="pricing__pay">
+        <span>Оплата</span>
+        <div class="pay-methods">
+          <span class="pay">СБП</span>
+          <span class="pay">МИР</span>
+          <span class="pay">Visa / MC</span>
+          <span class="pay">USDT</span>
+        </div>
+      </div>
+      <div class="pricing__pay">
+        <span>Сброс HWID</span>
+        <div class="pay-methods">
+          <span class="pay">1 раз в 30 дней — бесплатно</span>
+          <span class="pay">доп. сброс — 99 ₽</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ REVIEWS ============ -->
+<section class="section section--contrast" id="reviews">
+  <div class="container">
+    <div class="section__head reveal">
+      <span class="eyebrow"><svg><use href="#i-users"></use></svg> Отзывы</span>
+      <h2>24 180 игроков уже внутри</h2>
+      <p>Средняя оценка 4.8 / 5 по 1 936 отзывам в Discord.</p>
+    </div>
+
+    <div class="reviews">
+      <figure class="review reveal">
+        <div class="review__stars" aria-label="Оценка 5 из 5"><svg><use href="#i-star"></use></svg><svg><use href="#i-star"></use></svg><svg><use href="#i-star"></use></svg><svg><use href="#i-star"></use></svg><svg><use href="#i-star"></use></svg></div>
+        <blockquote>За неделю на FunTime ни одного флага. Ротации плавные, а ClickGUI — отдельный вид искусства, реально приятно пользоваться.</blockquote>
+        <figcaption><span class="avatar">К</span><span><b>Кирилл</b><small>Pro · 124 дня</small></span></figcaption>
+      </figure>
+      <figure class="review reveal" data-delay="1">
+        <div class="review__stars" aria-label="Оценка 5 из 5"><svg><use href="#i-star"></use></svg><svg><use href="#i-star"></use></svg><svg><use href="#i-star"></use></svg><svg><use href="#i-star"></use></svg><svg><use href="#i-star"></use></svg></div>
+        <blockquote>На ноутбуке с 8 ГБ было 60–80 FPS. Поставил Enuda — стабильно 190+, чанки грузятся без заморозки. Разница как между HDD и SSD.</blockquote>
+        <figcaption><span class="avatar">Д</span><span><b>Даниил</b><small>Pro · 61 день</small></span></figcaption>
+      </figure>
+      <figure class="review reveal" data-delay="2">
+        <div class="review__stars" aria-label="Оценка 5 из 5"><svg><use href="#i-star"></use></svg><svg><use href="#i-star"></use></svg><svg><use href="#i-star"></use></svg><svg><use href="#i-star"></use></svg><svg><use href="#i-star"></use></svg></div>
+        <blockquote>Обход Vulcan на SpookyTime работает как обещали, а обновление прилетело через сутки после патча античита. Такое отношение к делу редкость.</blockquote>
+        <figcaption><span class="avatar">М</span><span><b>Максим</b><small>Max · 210 дней</small></span></figcaption>
+      </figure>
+      <figure class="review reveal">
+        <div class="review__stars" aria-label="Оценка 5 из 5"><svg><use href="#i-star"></use></svg><svg><use href="#i-star"></use></svg><svg><use href="#i-star"></use></svg><svg><use href="#i-star"></use></svg><svg><use href="#i-star"></use></svg></div>
+        <blockquote>Конфиги в облаке — то, чего не хватало. Закинул свой пресет друзьям ссылкой, они загрузили за секунду. Никаких файлов вручную.</blockquote>
+        <figcaption><span class="avatar">Н</span><span><b>Никита</b><small>Pro · 38 дней</small></span></figcaption>
+      </figure>
+      <figure class="review reveal" data-delay="1">
+        <div class="review__stars" aria-label="Оценка 4 из 5"><svg><use href="#i-star"></use></svg><svg><use href="#i-star"></use></svg><svg><use href="#i-star"></use></svg><svg><use href="#i-star"></use></svg><svg class="is-off"><use href="#i-star"></use></svg></div>
+        <blockquote>Взял Lite ради оптимизации — за свои деньги отлично. Минус балл за то, что обходы только в Pro, но это уже вопрос тарифа, а не клиента.</blockquote>
+        <figcaption><span class="avatar">А</span><span><b>Артём</b><small>Lite · 90 дней</small></span></figcaption>
+      </figure>
+      <figure class="review reveal" data-delay="2">
+        <div class="review__stars" aria-label="Оценка 5 из 5"><svg><use href="#i-star"></use></svg><svg><use href="#i-star"></use></svg><svg><use href="#i-star"></use></svg><svg><use href="#i-star"></use></svg><svg><use href="#i-star"></use></svg></div>
+        <blockquote>Написал в поддержку в три ночи — ответили за шесть минут и бесплатно сбросили HWID после смены материнки. Это уровень.</blockquote>
+        <figcaption><span class="avatar">Е</span><span><b>Егор</b><small>Max · 152 дня</small></span></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="section" id="faq">
+  <div class="container faq-wrap">
+    <div class="faq__copy reveal">
+      <span class="eyebrow"><svg><use href="#i-sparkles"></use></svg> FAQ</span>
+      <h2>Частые вопросы</h2>
+      <p>Не нашли ответ? Напишите в Discord — поддержка отвечает в среднем за 8 минут.</p>
+      <a class="btn btn--tonal ripple" href="#" data-open-download>
+        <svg><use href="#i-download"></use></svg> Получить лаунчер
+      </a>
+    </div>
+
+    <div class="faq reveal" data-delay="1">
+      <div class="acc">
+        <button class="acc__head" aria-expanded="true">
+          <span>На какой версии Minecraft работает Enuda?</span>
+          <svg class="acc__chev"><use href="#i-chevron"></use></svg>
+        </button>
+        <div class="acc__panel"><div class="acc__inner">
+          Стабильная сборка — <strong>Fabric 1.21.11</strong>. Нужен Fabric Loader 0.16.9+ и Java 21.
+          Также доступна бета для 1.21.9/1.21.10; версии ниже 1.21 архивированы и не поддерживаются.
+          Лаунчер сам подберёт нужную сборку и моды.
+        </div></div>
+      </div>
+
+      <div class="acc">
+        <button class="acc__head" aria-expanded="false">
+          <span>Это забанят?</span>
+          <svg class="acc__chev"><use href="#i-chevron"></use></svg>
+        </button>
+        <div class="acc__panel"><div class="acc__inner">
+          Любая модификация, изменяющая поведение игры, формально нарушает правила серверов —
+          и мы не обещаем «100% защиту навсегда». Что мы делаем: тестируем обходы на живых
+          серверах, держим поведение в рамках, имитирующих живого игрока, и выпускаем патчи в
+          течение 24–72 часов. Приватные методы (тариф Max) заметно снижают риск.
+        </div></div>
+      </div>
+
+      <div class="acc">
+        <button class="acc__head" aria-expanded="false">
+          <span>Какие античиты обходятся?</span>
+          <svg class="acc__chev"><use href="#i-chevron"></use></svg>
+        </button>
+        <div class="acc__panel"><div class="acc__inner">
+          Актуальная матрица — в разделе «Обходы»: GrimAC 2.3, Matrix 6.7, Vulcan 2.9,
+          NoCheatPlus. Intave находится в тестировании, Verus — в разработке.
+          Список обновляется вместе с каждым релизом клиента.
+        </div></div>
+      </div>
+
+      <div class="acc">
+        <button class="acc__head" aria-expanded="false">
+          <span>Нужен ли мощный компьютер?</span>
+          <svg class="acc__chev"><use href="#i-chevron"></use></svg>
+        </button>
+        <div class="acc__panel"><div class="acc__inner">
+          Нет: клиент оптимизирован и на слабых ПК даёт наибольший эффект. Минимум —
+          Windows 10/11 x64, 2-ядерный CPU, 4 ГБ ОЗУ (выделяйте игре 2 ГБ), Java 21.
+          На GTX 1650 / Ryzen 5 5600 мы получаем 250+ FPS в спавне при 12 чанках.
+        </div></div>
+      </div>
+
+      <div class="acc">
+        <button class="acc__head" aria-expanded="false">
+          <span>Как оплатить и когда придёт ключ?</span>
+          <svg class="acc__chev"><use href="#i-chevron"></use></svg>
+        </button>
+        <div class="acc__panel"><div class="acc__inner">
+          СБП, карты МИР / Visa / Mastercard, USDT. Регистрация не нужна — только e-mail.
+          Ключ и ссылка на лаунчер приходят на почту сразу после оплаты, обычно за 10–30 секунд.
+          Автопродлений нет.
+        </div></div>
+      </div>
+
+      <div class="acc">
+        <button class="acc__head" aria-expanded="false">
+          <span>Совместим ли клиент с шейдерами и другими модами?</span>
+          <svg class="acc__chev"><use href="#i-chevron"></use></svg>
+        </button>
+        <div class="acc__panel"><div class="acc__inner">
+          Да: Sodium, Iris Shaders, Lithium, Mod Menu, Xaero's World Map, ViaFabric.
+          Конфликты возможны с другими читами — держите Enuda единственным клиентом
+          в папке mods.
+        </div></div>
+      </div>
+
+      <div class="acc">
+        <button class="acc__head" aria-expanded="false">
+          <span>Что делать после смены ПК?</span>
+          <svg class="acc__chev"><use href="#i-chevron"></use></svg>
+        </button>
+        <div class="acc__panel"><div class="acc__inner">
+          Сбросить HWID можно в личном кабинете — один раз в 30 дней бесплатно.
+          Дополнительный сброс стоит 99 ₽. После сброса ключ активируется на новом устройстве
+          без потери оставшегося срока.
+        </div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DOWNLOAD CTA ============ -->
+<section class="section" id="download">
+  <div class="container">
+    <div class="cta reveal">
+      <div class="cta__glow" aria-hidden="true"></div>
+      <div class="cta__content">
+        <span class="chip chip--accent"><span class="dot dot--live"></span> 4.2 доступно</span>
+        <h2>Готовы играть по-своему?</h2>
+        <p>Скачайте лаунчер, введите ключ — и зайдите в мир с 250+ FPS и чистыми ротациями.
+          Установка занимает около двух минут.</p>
+        <div class="cta__actions">
+          <button class="btn btn--filled btn--lg ripple" type="button" data-open-download>
+            <svg><use href="#i-windows"></use></svg> Скачать для Windows
+          </button>
+          <a class="btn btn--outlined btn--lg ripple" href="#pricing">Выбрать тариф</a>
+        </div>
+        <ul class="cta__meta">
+          <li><svg><use href="#i-check"></use></svg> Windows 10/11 · 24 МБ</li>
+          <li><svg><use href="#i-check"></use></svg> Java 21 ставится автоматически</li>
+          <li><svg><use href="#i-check"></use></svg> Ключ не нужен для демо-режима</li>
+        </ul>
+      </div>
+      <div class="cta__art" aria-hidden="true">
+        <div class="cta__ring"></div>
+        <div class="cta__glyph">E</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="container footer__inner">
+    <div class="footer__brand">
+      <a class="brand" href="#home" aria-label="Enuda Client">
+        <span class="brand__mark">
+          <svg viewBox="0 0 32 32" aria-hidden="true">
+            <path d="M16 2 28.1 9v14L16 30 3.9 23V9L16 2Z" fill="none" stroke="currentColor" stroke-width="2"/>
+            <path d="M11 11.5h10M11 16h7.5M11 20.5h10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </span>
+        <span class="brand__text">ENUDA<span>client</span></span>
+      </a>
+      <p>Клиент для Minecraft Fabric 1.21.11: обходы античитов, оптимизация FPS и интерфейс на Material&nbsp;3.</p>
+      <div class="footer__social">
+        <a class="icon-btn ripple" href="#" aria-label="Discord"><svg><use href="#i-discord"></use></svg></a>
+        <a class="icon-btn ripple" href="#" aria-label="Telegram"><svg><use href="#i-telegram"></use></svg></a>
+        <a class="icon-btn ripple" href="#" aria-label="YouTube"><svg><use href="#i-youtube"></use></svg></a>
+      </div>
+    </div>
+
+    <nav class="footer__col" aria-label="Клиент">
+      <h4>Клиент</h4>
+      <a href="#bypass">Обходы</a>
+      <a href="#performance">Производительность</a>
+      <a href="#modules">Модули</a>
+      <a href="#gui">ClickGUI</a>
+      <a href="#pricing">Тарифы</a>
+    </nav>
+
+    <nav class="footer__col" aria-label="Помощь">
+      <h4>Помощь</h4>
+      <a href="#faq">FAQ</a>
+      <a href="#" data-open-download>Установка</a>
+      <a href="#">Сброс HWID</a>
+      <a href="#">Статус серверов</a>
+      <a href="#">Связаться с поддержкой</a>
+    </nav>
+
+    <nav class="footer__col" aria-label="Документы">
+      <h4>Документы</h4>
+      <a href="#">Пользовательское соглашение</a>
+      <a href="#">Политика конфиденциальности</a>
+      <a href="#">Возврат средств</a>
+      <a href="#">Правила сообщества</a>
+    </nav>
+  </div>
+
+  <div class="container footer__bottom">
+    <p>© 2026 Enuda Client. Проект не связан с Mojang Studios и Microsoft. Minecraft — торговая марка Mojang AB.</p>
+    <p>Использование модификации может нарушать правила игровых серверов. Играйте ответственно.</p>
+  </div>
+</footer>
+
+<button class="fab ripple" id="toTop" type="button" aria-label="Наверх">
+  <svg><use href="#i-arrow-up"></use></svg>
+</button>
+
+<!-- ============ DOWNLOAD DIALOG ============ -->
+<dialog class="dialog" id="downloadDialog">
+  <form method="dialog" class="dialog__form">
+    <div class="dialog__head">
+      <div>
+        <span class="chip chip--accent">v4.2.1</span>
+        <h3>Скачать Enuda Launcher</h3>
+        <p>Выберите систему — лаунчер подберёт сборку Fabric 1.21.11 автоматически.</p>
+      </div>
+      <button class="icon-btn ripple" value="close" aria-label="Закрыть"><svg><use href="#i-close"></use></svg></button>
+    </div>
+
+    <div class="dialog__os">
+      <button type="button" class="os-card is-active ripple" data-os="windows">
+        <svg><use href="#i-windows"></use></svg>
+        <span><b>Windows</b><small>10 / 11 · x64 · 24 МБ</small></span>
+      </button>
+      <button type="button" class="os-card ripple" data-os="macos">
+        <svg><use href="#i-apple"></use></svg>
+        <span><b>macOS</b><small>12+ · Apple Silicon / Intel</small></span>
+      </button>
+      <button type="button" class="os-card ripple" data-os="linux">
+        <svg><use href="#i-linux"></use></svg>
+        <span><b>Linux</b><small>AppImage · x64</small></span>
+      </button>
+    </div>
+
+    <ol class="dialog__steps">
+      <li><span class="step-n">1</span> Запустите установщик и разрешите установку.</li>
+      <li><span class="step-n">2</span> Введите ключ из письма — он привяжется к вашему ПК.</li>
+      <li><span class="step-n">3</span> Нажмите «Играть»: Fabric и моды поставит лаунчер.</li>
+    </ol>
+
+    <div class="dialog__note">
+      <svg><use href="#i-shield"></use></svg>
+      <span>Файл подписан и обновляется по шифрованному каналу. Антивирус может ругаться на инжектор — это ложное срабатывание.</span>
+    </div>
+
+    <div class="dialog__actions">
+      <button class="btn btn--filled btn--full ripple" value="close" id="dialogDownload">
+        <svg><use href="#i-download"></use></svg> Скачать для <span id="osLabel">Windows</span>
+      </button>
+      <a class="btn btn--text btn--full ripple" href="#pricing" data-close-dialog>Сначала выбрать тариф</a>
+    </div>
+  </form>
+</dialog>
+
+<div class="snackbar" id="snackbar" role="status" aria-live="polite"></div>
+
+<script src="assets/js/modules-data.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>
